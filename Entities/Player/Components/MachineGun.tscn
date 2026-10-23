@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b6acxmrpx1owa"]
+
+[ext_resource type="Script" uid="uid://cn6nsfaj7ubiq" path="res://Entities/Player/Components/machine_gun.gd" id="1_0fojp"]
+[ext_resource type="Texture2D" uid="uid://2ec8bfmy2dye" path="res://Entities/Player/Assets/machine_gun.png" id="2_bsps6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bsps6"]
+radius = 8.0
+height = 48.0
+
+[node name="MachineGun" type="Area2D" unique_id=841117510 node_paths=PackedStringArray("collision_shape")]
+z_index = 1
+script = ExtResource("1_0fojp")
+component_size = 1
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=484176547]
+position = Vector2(0, 16)
+texture = ExtResource("2_bsps6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=584420267]
+position = Vector2(0, 16)
+shape = SubResource("CapsuleShape2D_bsps6")
