@@ -5,7 +5,7 @@ extends Node2D
 
 # Gameplay variables
 @export var max_speed: float = 800.0
-@export var accel_spd: float = 200.0
+@export var accel_spd: float = 300.0
 @export var max_accel: float = 800.0
 @export var max_velocity: float = 1200.0
 @onready var velocity: Vector2 = Vector2.ZERO
@@ -33,6 +33,10 @@ func _physics_process(delta: float) -> void:
 	# Apply velocity to position
 	velocity = velocity.limit_length(max_velocity)
 	position += velocity * delta
+
+func _process(delta: float) -> void:
+	for component in components:
+		component.process(delta)
 
 # Add a new component to the player
 func add_component(new_component) -> void:

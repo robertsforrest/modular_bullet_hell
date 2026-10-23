@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bajbukconqclo"]
+
+[ext_resource type="Script" uid="uid://c4348s46chb0f" path="res://Entities/Player/Projectiles/player_laser_small.gd" id="1_ig64a"]
+[ext_resource type="Texture2D" uid="uid://2ld41w4xiuq0" path="res://Entities/Player/Assets/player_laser_1.png" id="1_yy7lx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yy7lx"]
+radius = 4.0
+height = 36.0
+
+[node name="PlayerLaserSmall" type="Area2D" unique_id=1227237203 groups=["player_bullets"]]
+script = ExtResource("1_ig64a")
+speed = 2400.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=666694831]
+rotation = 1.5707964
+texture = ExtResource("1_yy7lx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=869283255]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_yy7lx")

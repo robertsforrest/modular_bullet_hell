@@ -1,1 +1,1 @@
-extends ShipComponent
+extends GunComponent
