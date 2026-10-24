@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://blfmhjgu05o0x"]
+
+[ext_resource type="Script" uid="uid://dtsw5tg05nsxn" path="res://Entities/Enemies/Projectiles/enemy_bullet.gd" id="1_p3qdg"]
+[ext_resource type="Texture2D" uid="uid://dmr0nk0s6x8t" path="res://Entities/Enemies/Assets/enemy_laser_1.png" id="2_4lnn0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twdeo"]
+radius = 4.0
+height = 32.0
+
+[node name="EnemyLaserSmall" type="Area2D" unique_id=90014701 groups=["enemy_bullets"]]
+script = ExtResource("1_p3qdg")
+speed = 1400.0
+metadata/_custom_type_script = "uid://dtsw5tg05nsxn"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1107368994]
+rotation = 1.5707964
+texture = ExtResource("2_4lnn0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1464652319]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_twdeo")

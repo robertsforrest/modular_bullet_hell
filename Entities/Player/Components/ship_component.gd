@@ -2,7 +2,7 @@ class_name ShipComponent
 extends Area2D
 
 # Signals
-signal part_destroyed
+signal part_destroyed(part: ShipComponent)
 
 # Editor variables
 @export var hp: float = 1.0
