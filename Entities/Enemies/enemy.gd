@@ -29,6 +29,9 @@ func _physics_process(delta: float) -> void:
 	position += velocity * delta
 
 func _process(delta: float) -> void:
+	# Check if all components have been destroyed - if so, get rid of the ship
+	if (ship_core == null):
+		queue_free()
 	# Physical components
 	for component in components:
 		component.process(delta)
@@ -49,9 +52,6 @@ func add_logic_component(new_component) -> void:
 
 # Hande part_destroyed signal from components
 func _on_part_destroyed(part: EnemyComponent) -> void:
-	print("Part destroyed: " + str(part))
+	print("Part destroyed: " + str(part.name))
 	# Check whether the core has been destroyed
-	if (part == ship_core):
-		queue_free()
-	else:
-		components.erase(part)
+	components.erase(part)

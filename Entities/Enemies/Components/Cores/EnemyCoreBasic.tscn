@@ -10,6 +10,7 @@ height = 80.0
 
 [node name="EnemyCoreBasic" type="Area2D" unique_id=1613202619 node_paths=PackedStringArray("connection_points", "collision_shape")]
 script = ExtResource("1_5actl")
+hp = 10.0
 connection_points = [NodePath("ConnPoint1"), NodePath("ConnPoint2")]
 component_size = 2
 collision_shape = NodePath("CollisionShape2D")

@@ -17,6 +17,5 @@ func _on_area_entered(area: Area2D) -> void:
 		hp -= area.get_damage_amount()
 		# Check for death
 		if (hp <= 0):
-			part_destroyed.emit(self)
-			queue_free() # TODO: juj this up with some cool VFX, drifting broken parts, etc.
+			get_destroyed()
 		area.queue_free()

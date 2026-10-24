@@ -33,6 +33,8 @@ func add_component(new_component: ShipComponent, conn_point_index: int) -> ShipC
 	if (new_component.component_size <= connection_points[conn_point_index].max_size):
 		# Parent the new component to this component's own parent
 		get_parent().add_ship_component(new_component)
+		# Track this component with the ComponentSlot
+		connection_points[conn_point_index].component = new_component
 		# Set the new component's position based on the connection point
 		# NOTE: this is a core design decision - sprite position relative to the origin of the node
 		# will determine the connection point for the new component & the origin of flip_h, where applicable
@@ -47,6 +49,17 @@ func add_component(new_component: ShipComponent, conn_point_index: int) -> ShipC
 	else:
 		print("Component too large!: " + str(new_component))
 		return null
+
+# Destroy this component; called from HP checks in child types
+func get_destroyed() -> void:
+	# Emit destruction signal
+	part_destroyed.emit(self)
+	# Propagate destruction to child components
+	for connection_point in connection_points:
+		if (connection_point.component != null):
+			connection_point.component.get_destroyed()
+	# Remove from the scene treeu
+	queue_free()
 
 # Handle area entered code; override in child nodes
 func _on_area_entered(area: Area2D) -> void:
