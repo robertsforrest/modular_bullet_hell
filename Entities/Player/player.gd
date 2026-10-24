@@ -5,7 +5,8 @@ extends Node2D
 
 # Gameplay variables
 @export var max_speed: float = 800.0
-@export var accel_spd: float = 200.0
+@export var move_speed: float = 300.0
+@export var accel_spd: float = 300.0
 @export var max_accel: float = 800.0
 @export var max_velocity: float = 1200.0
 @onready var velocity: Vector2 = Vector2.ZERO
@@ -17,7 +18,20 @@ func _physics_process(delta: float) -> void:
 	# Look towards mouse position
 	look_at(get_global_mouse_position())
 	rotation_degrees -= 90 # Offset to point straight - TODO: magic number naughty naughty!
-	# Parse mouse input
+	do_movement_with_accel(delta)
+	#do_movement_no_accel(delta)
+
+# Try movement w/ no fancy accel - thrusters just influence max speed
+func do_movement_no_accel(delta: float) -> void:
+	velocity = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down")).normalized() * move_speed
+	for component in components:
+		component.physics_process(delta)
+	velocity = velocity.limit_length(max_velocity)
+	position += velocity * delta
+	
+# Wrap this in a specialty function for prototyping
+func do_movement_with_accel(delta: float) -> void:
+	# Parse movement input
 	accel = Vector2.ZERO
 	accel.x = Input.get_axis("move_left", "move_right")
 	accel.y = Input.get_axis("move_up", "move_down")
@@ -33,6 +47,10 @@ func _physics_process(delta: float) -> void:
 	# Apply velocity to position
 	velocity = velocity.limit_length(max_velocity)
 	position += velocity * delta
+
+func _process(delta: float) -> void:
+	for component in components:
+		component.process(delta)
 
 # Add a new component to the player
 func add_component(new_component) -> void:
