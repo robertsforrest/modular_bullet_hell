@@ -53,6 +53,6 @@ func _process(delta: float) -> void:
 		component.process(delta)
 
 # Add a new component to the player
-func add_component(new_component) -> void:
+func add_ship_component(new_component) -> void:
 	add_child(new_component)
 	components.append(new_component)

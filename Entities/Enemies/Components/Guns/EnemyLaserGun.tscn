@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://g0qfkxs5vpij"]
+
+[ext_resource type="Script" uid="uid://cifvb8ffvv5kn" path="res://Entities/Enemies/Components/Guns/enemy_gun_component.gd" id="1_ucihi"]
+[ext_resource type="Texture2D" uid="uid://hw7aemxrynw2" path="res://Entities/Player/Assets/laser_gun.png" id="2_ldsc7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldsc7"]
+radius = 8.0
+
+[node name="EnemyLaserGun" type="Area2D" unique_id=2092387067 node_paths=PackedStringArray("collision_shape")]
+script = ExtResource("1_ucihi")
+collision_shape = NodePath("CollisionShape2D")
+metadata/_custom_type_script = "uid://cifvb8ffvv5kn"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1166800247]
+position = Vector2(0, 4)
+texture = ExtResource("2_ldsc7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=983952551]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_ldsc7")

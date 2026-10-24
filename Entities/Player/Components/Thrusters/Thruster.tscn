@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://lumark28yxtc"]
 
-[ext_resource type="Script" uid="uid://chjuu8dgmirsq" path="res://Entities/Player/Components/thruster.gd" id="1_k51gw"]
+[ext_resource type="Script" uid="uid://chjuu8dgmirsq" path="res://Entities/Player/Components/Thrusters/thruster.gd" id="1_k51gw"]
 [ext_resource type="Texture2D" uid="uid://bdex2ab04c5ro" path="res://Entities/Player/Assets/thruster.png" id="2_4kd13"]
 [ext_resource type="Script" uid="uid://8awku0sdu4u5" path="res://Entities/Player/Components/component_slot.gd" id="3_k51gw"]
 

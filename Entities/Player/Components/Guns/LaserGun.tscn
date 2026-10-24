@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dy8deqmtlgppq"]
 
-[ext_resource type="Script" uid="uid://ino5mhbbsc41" path="res://Entities/Player/Components/laser_gun.gd" id="1_15782"]
+[ext_resource type="Script" uid="uid://ino5mhbbsc41" path="res://Entities/Player/Components/Guns/laser_gun.gd" id="1_15782"]
 [ext_resource type="Texture2D" uid="uid://hw7aemxrynw2" path="res://Entities/Player/Assets/laser_gun.png" id="2_1mt4w"]
 [ext_resource type="PackedScene" uid="uid://bajbukconqclo" path="res://Entities/Player/Projectiles/PlayerLaserSmall.tscn" id="2_5pjx0"]
 

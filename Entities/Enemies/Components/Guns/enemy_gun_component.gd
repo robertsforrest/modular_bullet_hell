@@ -1,0 +1,2 @@
+class_name EnemyGunComponent
+extends EnemyComponent
