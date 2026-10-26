@@ -2,9 +2,24 @@
 
 [ext_resource type="PackedScene" uid="uid://7dq1lynqq3u" path="res://Entities/Player/Components/PlayerCore.tscn" id="1_e5kic"]
 [ext_resource type="Script" uid="uid://bek6h2rqk2yxn" path="res://Entities/Player/player.gd" id="1_ww0jn"]
+[ext_resource type="PackedScene" uid="uid://dym57mo5kfg5g" path="res://Entities/Player/Components/Wings/Wing.tscn" id="3_vweq0"]
+[ext_resource type="PackedScene" uid="uid://dy8deqmtlgppq" path="res://Entities/Player/Components/Guns/LaserGun.tscn" id="4_1des2"]
 
-[node name="Player" type="Node2D" unique_id=2004784632 node_paths=PackedStringArray("ship_core")]
+[node name="Player" type="Node2D" unique_id=2004784632 node_paths=PackedStringArray("ship_core", "components")]
 script = ExtResource("1_ww0jn")
 ship_core = NodePath("PlayerCore")
+components = [NodePath("Wing"), NodePath("Wing2"), NodePath("LaserGun"), NodePath("LaserGun2")]
 
-[node name="PlayerCore" parent="." unique_id=1889912984 instance=ExtResource("1_e5kic")]
+[node name="PlayerCore" parent="." unique_id=605424737 instance=ExtResource("1_e5kic")]
+
+[node name="Wing" parent="." unique_id=79534973 instance=ExtResource("3_vweq0")]
+position = Vector2(-120, -16)
+
+[node name="Wing2" parent="." unique_id=24557704 instance=ExtResource("3_vweq0")]
+position = Vector2(136, 0)
+
+[node name="LaserGun" parent="." unique_id=202339197 instance=ExtResource("4_1des2")]
+position = Vector2(-88, 80)
+
+[node name="LaserGun2" parent="." unique_id=1990676974 instance=ExtResource("4_1des2")]
+position = Vector2(-32, 96)

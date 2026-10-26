@@ -3,6 +3,7 @@ extends Area2D
 
 # Signals
 signal part_destroyed(part: ShipComponent)
+signal part_selected(part: ShipComponent)
 
 # Editor variables
 @export var hp: float = 1.0
@@ -10,13 +11,20 @@ signal part_destroyed(part: ShipComponent)
 @export var component_size: Enum.component_size
 @export var collision_shape: CollisionShape2D
 
+# Internal variables
+@onready var mouse_over: bool = false
+
 # Initialize
 func _ready() -> void:
 	self.area_entered.connect(_on_area_entered)
+	self.mouse_entered.connect(_on_mouse_entered)
+	self.mouse_exited.connect(_on_mouse_exited)
 
 # Accessor for sprite's h_flip value
-func set_flip_h(val: bool):
+func set_flip_h(val: bool) -> void:
 	self.scale.x = -1.0
+func toggle_flip_h() -> void:
+	self.scale.x *= -1
 
 # Wrappers for frame update code; rather than getting called from the engine, these get called
 # from the engine update loops in the component's parent for more control over component code
@@ -24,6 +32,12 @@ func process(delta: float) -> void:
 	pass
 func physics_process(delta: float) -> void:
 	pass
+
+# Handle input events to check for mouse-click in editor mode
+func _input(event: InputEvent) -> void:
+	if (event is InputEventMouseButton and Input.is_action_just_pressed("select") and mouse_over):
+		get_viewport().set_input_as_handled() # Halt the input event on the first instance of this code executing
+		part_selected.emit(self) # Signal part selection for player_ship_edit.gd handling
 
 # Adds a new component to this one at the specified connection point
 # Takes conn_point_index as an index into the connection_points array - is there a better way?
@@ -64,3 +78,9 @@ func get_destroyed() -> void:
 # Handle area entered code; override in child nodes
 func _on_area_entered(area: Area2D) -> void:
 	pass
+
+# Mouse handling for editing ship
+func _on_mouse_entered() -> void:
+	mouse_over = true
+func _on_mouse_exited() -> void:
+	mouse_over = false

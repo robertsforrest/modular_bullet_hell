@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://1mvu374r6s06"]
+
+[ext_resource type="Script" uid="uid://8awku0sdu4u5" path="res://Entities/Player/Components/component_slot.gd" id="1_1ynkm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ynkm"]
+radius = 8.0
+
+[node name="ComponentSlot" type="Area2D" unique_id=1221076231]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_1ynkm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=568535444]
+shape = SubResource("CircleShape2D_1ynkm")
