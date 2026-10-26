@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cv8j7gpmpeqwe"]
+
+[ext_resource type="Script" uid="uid://f8dlcb2g3pnp" path="res://Entities/Enemies/Components/Cores/enemy_core_basic.gd" id="1_5actl"]
+[ext_resource type="Texture2D" uid="uid://4gq8u25q6osf" path="res://Entities/Enemies/Assets/enemy_core_basic.png" id="2_brav0"]
+[ext_resource type="Script" uid="uid://8awku0sdu4u5" path="res://Entities/Player/Components/component_slot.gd" id="3_4txx4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bs1o3"]
+radius = 20.0
+height = 80.0
+
+[node name="EnemyCoreBasic" type="Area2D" unique_id=1613202619 node_paths=PackedStringArray("connection_points", "collision_shape")]
+script = ExtResource("1_5actl")
+hp = 10.0
+connection_points = [NodePath("ConnPoint1"), NodePath("ConnPoint2")]
+component_size = 2
+collision_shape = NodePath("CollisionShape2D")
+metadata/_custom_type_script = "uid://dpjmm3b83c1q8"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=516493498]
+texture = ExtResource("2_brav0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=792465796]
+shape = SubResource("CapsuleShape2D_bs1o3")
+
+[node name="ConnPoint1" type="Node2D" parent="." unique_id=1538604805]
+position = Vector2(-20, -4)
+script = ExtResource("3_4txx4")
+max_size = 2
+
+[node name="ConnPoint2" type="Node2D" parent="." unique_id=1032854707]
+position = Vector2(20, -4)
+script = ExtResource("3_4txx4")
+max_size = 2

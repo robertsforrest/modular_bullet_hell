@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c1mkc7kns72o3"]
+
+[ext_resource type="Script" uid="uid://ch20x55j54cfe" path="res://Entities/Enemies/Components/Logic/enemy_logic_aim_at_player.gd" id="1_7yhl7"]
+
+[node name="EnemyLogicAimAtPlayer" type="Node" unique_id=1436714157]
+script = ExtResource("1_7yhl7")
+metadata/_custom_type_script = "uid://bcg0qtat7ji8v"

@@ -6,9 +6,9 @@ extends Node2D
 # Gameplay variables
 @export var max_speed: float = 800.0
 @export var move_speed: float = 300.0
-@export var accel_spd: float = 300.0
-@export var max_accel: float = 800.0
-@export var max_velocity: float = 1200.0
+@export var accel_spd: float = 600.0
+@export var max_accel: float = 1000.0
+@export var max_velocity: float = 1500.0
 @onready var velocity: Vector2 = Vector2.ZERO
 @onready var accel: Vector2 = Vector2.ZERO
 @onready var components: Array[ShipComponent] = []
@@ -53,6 +53,6 @@ func _process(delta: float) -> void:
 		component.process(delta)
 
 # Add a new component to the player
-func add_component(new_component) -> void:
+func add_ship_component(new_component) -> void:
 	add_child(new_component)
 	components.append(new_component)
