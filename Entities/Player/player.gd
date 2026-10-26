@@ -11,15 +11,34 @@ extends Node2D
 @export var max_velocity: float = 1500.0
 @onready var velocity: Vector2 = Vector2.ZERO
 @onready var accel: Vector2 = Vector2.ZERO
-@onready var components: Array[ShipComponent] = []
+@export var components: Array[ShipComponent] = [] # TODO: this should usually be handled programmatically, not in-editor!
+@onready var player_paused: bool = false
 
 # Gameplay loop
 func _physics_process(delta: float) -> void:
 	# Look towards mouse position
-	look_at(get_global_mouse_position())
-	rotation_degrees -= 90 # Offset to point straight - TODO: magic number naughty naughty!
-	do_movement_with_accel(delta)
-	#do_movement_no_accel(delta)
+	if (!player_paused):
+		look_at(get_global_mouse_position())
+		rotation_degrees -= 90 # Offset to point straight - TODO: magic number naughty naughty!
+		do_movement_with_accel(delta)
+		#do_movement_no_accel(delta)
+
+func _process(delta: float) -> void:
+	if (!player_paused):
+		for component in components:
+			component.process(delta)
+
+# Deletes components without a valid connection
+func cull_orphaned_parts() -> void:
+	var orphaned_components: Array[ShipComponent]
+	# Identify all orphaned components
+	for component in components:
+		if (!component.is_part_connected()):
+			orphaned_components.append(component)
+	# Execute queue_free on orphaned components
+	for component in orphaned_components:
+		components.erase(component)
+		component.queue_free()
 
 # Try movement w/ no fancy accel - thrusters just influence max speed
 func do_movement_no_accel(delta: float) -> void:
@@ -28,7 +47,7 @@ func do_movement_no_accel(delta: float) -> void:
 		component.physics_process(delta)
 	velocity = velocity.limit_length(max_velocity)
 	position += velocity * delta
-	
+
 # Wrap this in a specialty function for prototyping
 func do_movement_with_accel(delta: float) -> void:
 	# Parse movement input
@@ -47,10 +66,6 @@ func do_movement_with_accel(delta: float) -> void:
 	# Apply velocity to position
 	velocity = velocity.limit_length(max_velocity)
 	position += velocity * delta
-
-func _process(delta: float) -> void:
-	for component in components:
-		component.process(delta)
 
 # Add a new component to the player
 func add_ship_component(new_component) -> void:

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://3403tynv222u"]
+
+[ext_resource type="Script" uid="uid://cx313dy6sjey8" path="res://Entities/Player/player_ship_edit.gd" id="1_qh36b"]
+
+[node name="PlayerShipEdit" type="Node2D" unique_id=410550229]
+script = ExtResource("1_qh36b")

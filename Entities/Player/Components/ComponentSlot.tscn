@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cx6vdkrsl6d37"]
+
+[ext_resource type="Script" uid="uid://8awku0sdu4u5" path="res://Entities/Player/Components/component_slot.gd" id="1_1ynkm"]
+[ext_resource type="Texture2D" uid="uid://dg82c7or6syo" path="res://Entities/Player/Assets/conn_line.png" id="2_7rqpl"]
+
+[node name="ComponentSlot" type="Node2D" unique_id=1870786713 node_paths=PackedStringArray("conn_line") groups=["component_slots"]]
+script = ExtResource("1_1ynkm")
+conn_line = NodePath("Line2D")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1367237718]
+z_index = -1
+texture = ExtResource("2_7rqpl")
+texture_mode = 1

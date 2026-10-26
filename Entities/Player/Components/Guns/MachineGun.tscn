@@ -3,16 +3,18 @@
 [ext_resource type="Script" uid="uid://cn6nsfaj7ubiq" path="res://Entities/Player/Components/Guns/machine_gun.gd" id="1_0fojp"]
 [ext_resource type="Texture2D" uid="uid://2ec8bfmy2dye" path="res://Entities/Player/Assets/machine_gun.png" id="2_bsps6"]
 [ext_resource type="PackedScene" uid="uid://j3jimo0mff4q" path="res://Entities/Player/Projectiles/PlayerBullet.tscn" id="2_tvpx7"]
+[ext_resource type="PackedScene" uid="uid://cx6vdkrsl6d37" path="res://Entities/Player/Components/ComponentSlot.tscn" id="4_ia3sb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bsps6"]
 radius = 8.0
 height = 48.0
 
-[node name="MachineGun" type="Area2D" unique_id=841117510 node_paths=PackedStringArray("cooldown_timer", "collision_shape")]
+[node name="MachineGun" type="Area2D" unique_id=841117510 node_paths=PackedStringArray("cooldown_timer", "connection_points", "collision_shape") groups=["player_components"]]
 z_index = 1
 script = ExtResource("1_0fojp")
 bullet_tscn = ExtResource("2_tvpx7")
 cooldown_timer = NodePath("CooldownTimer")
+connection_points = [NodePath("ComponentSlot")]
 component_size = 1
 collision_shape = NodePath("CollisionShape2D")
 
@@ -26,3 +28,6 @@ shape = SubResource("CapsuleShape2D_bsps6")
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=1498351019]
 one_shot = true
+
+[node name="ComponentSlot" parent="." unique_id=1870786713 instance=ExtResource("4_ia3sb")]
+max_size = 1

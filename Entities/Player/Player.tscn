@@ -2,9 +2,38 @@
 
 [ext_resource type="PackedScene" uid="uid://7dq1lynqq3u" path="res://Entities/Player/Components/PlayerCore.tscn" id="1_e5kic"]
 [ext_resource type="Script" uid="uid://bek6h2rqk2yxn" path="res://Entities/Player/player.gd" id="1_ww0jn"]
+[ext_resource type="PackedScene" uid="uid://dym57mo5kfg5g" path="res://Entities/Player/Components/Wings/Wing.tscn" id="3_vweq0"]
+[ext_resource type="PackedScene" uid="uid://dy8deqmtlgppq" path="res://Entities/Player/Components/Guns/LaserGun.tscn" id="4_1des2"]
+[ext_resource type="PackedScene" uid="uid://b6acxmrpx1owa" path="res://Entities/Player/Components/Guns/MachineGun.tscn" id="5_t38ms"]
+[ext_resource type="PackedScene" uid="uid://lumark28yxtc" path="res://Entities/Player/Components/Thrusters/Thruster.tscn" id="6_hj1c0"]
 
-[node name="Player" type="Node2D" unique_id=2004784632 node_paths=PackedStringArray("ship_core")]
+[node name="Player" type="Node2D" unique_id=2004784632 node_paths=PackedStringArray("ship_core", "components")]
 script = ExtResource("1_ww0jn")
 ship_core = NodePath("PlayerCore")
+components = [NodePath("Wing"), NodePath("Wing2"), NodePath("LaserGun"), NodePath("LaserGun2"), NodePath("MachineGun"), NodePath("MachineGun2"), NodePath("Thruster"), NodePath("Thruster2")]
 
 [node name="PlayerCore" parent="." unique_id=1889912984 instance=ExtResource("1_e5kic")]
+
+[node name="Wing" parent="." unique_id=79534973 instance=ExtResource("3_vweq0")]
+position = Vector2(-192, -40)
+
+[node name="Wing2" parent="." unique_id=829900086 instance=ExtResource("3_vweq0")]
+position = Vector2(-72, -32)
+
+[node name="LaserGun" parent="." unique_id=202339197 instance=ExtResource("4_1des2")]
+position = Vector2(56, -40)
+
+[node name="LaserGun2" parent="." unique_id=1397710819 instance=ExtResource("4_1des2")]
+position = Vector2(-104, 72)
+
+[node name="MachineGun" parent="." unique_id=841117510 instance=ExtResource("5_t38ms")]
+position = Vector2(-16, 24)
+
+[node name="MachineGun2" parent="." unique_id=639470045 instance=ExtResource("5_t38ms")]
+position = Vector2(80, 40)
+
+[node name="Thruster" parent="." unique_id=525355255 instance=ExtResource("6_hj1c0")]
+position = Vector2(-80, 72)
+
+[node name="Thruster2" parent="." unique_id=2021522708 instance=ExtResource("6_hj1c0")]
+position = Vector2(104, 24)

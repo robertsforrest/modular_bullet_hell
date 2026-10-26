@@ -2,32 +2,31 @@
 
 [ext_resource type="Script" uid="uid://du2bsv5hfl72g" path="res://Entities/Player/Components/player_core.gd" id="1_lphqv"]
 [ext_resource type="Texture2D" uid="uid://bcrb6ys310kgm" path="res://Entities/Player/Assets/player_base.png" id="2_lx1vp"]
-[ext_resource type="Script" uid="uid://8awku0sdu4u5" path="res://Entities/Player/Components/component_slot.gd" id="3_5878l"]
+[ext_resource type="PackedScene" uid="uid://cx6vdkrsl6d37" path="res://Entities/Player/Components/ComponentSlot.tscn" id="3_5878l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nw7j7"]
 radius = 20.0
 height = 56.0
 
-[node name="PlayerCore" type="Area2D" unique_id=605424737 node_paths=PackedStringArray("connection_points")]
+[node name="PlayerCore" type="Area2D" unique_id=605424737 node_paths=PackedStringArray("connection_points", "collision_shape") groups=["player_components"]]
 z_index = 1
 script = ExtResource("1_lphqv")
-connection_points = [NodePath("ConnPoint1"), NodePath("ConnPoint2")]
+connection_points = [NodePath("ComponentSlot"), NodePath("ComponentSlot2")]
 component_size = 2
+collision_shape = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2130130285]
 position = Vector2(0, 8)
 texture = ExtResource("2_lx1vp")
 
-[node name="ConnPoint1" type="Node2D" parent="." unique_id=1525478230]
-position = Vector2(-20, 0)
-script = ExtResource("3_5878l")
-max_size = 2
-
-[node name="ConnPoint2" type="Node2D" parent="." unique_id=1697793050]
-position = Vector2(20, 0)
-script = ExtResource("3_5878l")
-max_size = 2
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=828410314]
 position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_nw7j7")
+
+[node name="ComponentSlot" parent="." unique_id=1870786713 instance=ExtResource("3_5878l")]
+position = Vector2(-20, -4)
+max_size = 2
+
+[node name="ComponentSlot2" parent="." unique_id=648924746 instance=ExtResource("3_5878l")]
+position = Vector2(20, -4)
+max_size = 2

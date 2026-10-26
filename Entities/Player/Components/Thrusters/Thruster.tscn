@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://chjuu8dgmirsq" path="res://Entities/Player/Components/Thrusters/thruster.gd" id="1_k51gw"]
 [ext_resource type="Texture2D" uid="uid://bdex2ab04c5ro" path="res://Entities/Player/Assets/thruster.png" id="2_4kd13"]
-[ext_resource type="Script" uid="uid://8awku0sdu4u5" path="res://Entities/Player/Components/component_slot.gd" id="3_k51gw"]
+[ext_resource type="PackedScene" uid="uid://cx6vdkrsl6d37" path="res://Entities/Player/Components/ComponentSlot.tscn" id="3_u0p2q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k51gw"]
 radius = 8.0
 height = 64.0
 
-[node name="Thruster" type="Area2D" unique_id=525355255]
+[node name="Thruster" type="Area2D" unique_id=525355255 groups=["player_components"]]
 script = ExtResource("1_k51gw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1645755509]
@@ -16,11 +16,9 @@ position = Vector2(8, 4)
 rotation = -3.1415925
 texture = ExtResource("2_4kd13")
 
-[node name="ConnPoint1" type="Node2D" parent="." unique_id=2073068038]
-position = Vector2(16, 0)
-script = ExtResource("3_k51gw")
-max_size = 2
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2071249436]
 position = Vector2(8, 4)
 shape = SubResource("CapsuleShape2D_k51gw")
+
+[node name="ComponentSlot" parent="." unique_id=1870786713 instance=ExtResource("3_u0p2q")]
+max_size = 2
