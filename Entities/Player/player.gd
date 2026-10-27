@@ -11,15 +11,30 @@ extends Node2D
 @export var max_velocity: float = 1500.0
 @onready var velocity: Vector2 = Vector2.ZERO
 @onready var accel: Vector2 = Vector2.ZERO
-@onready var components: Array[ShipComponent] = []
+@export var components: Array[ShipComponent] = [] # TODO: this should be programmatic, not exposed to the editor
+
+# Internal variables
+@onready var is_paused: bool = false
 
 # Gameplay loop
+# Hard-coded pause variable in player allows movement to be halted without
+# interrupting processing on child ShipComponents in the ship editor
 func _physics_process(delta: float) -> void:
-	# Look towards mouse position
-	look_at(get_global_mouse_position())
-	rotation_degrees -= 90 # Offset to point straight - TODO: magic number naughty naughty!
-	do_movement_with_accel(delta)
-	#do_movement_no_accel(delta)
+	if (!is_paused):
+		# Look towards mouse position
+		look_at(get_global_mouse_position())
+		rotation_degrees -= 90 # Offset to point straight - TODO: magic number naughty naughty!
+		do_movement_with_accel(delta)
+		#do_movement_no_accel(delta)
+		
+func _process(delta: float) -> void:
+	if (!is_paused):
+		for component in components:
+			component.process(delta)
+	# Debug input in editor
+	else:
+		if (Input.is_action_just_pressed("debug_1")):
+			print(components[5].is_connected_to_core()) # This will be LaserGun2
 
 # Try movement w/ no fancy accel - thrusters just influence max speed
 func do_movement_no_accel(delta: float) -> void:
@@ -48,11 +63,12 @@ func do_movement_with_accel(delta: float) -> void:
 	velocity = velocity.limit_length(max_velocity)
 	position += velocity * delta
 
-func _process(delta: float) -> void:
-	for component in components:
-		component.process(delta)
-
 # Add a new component to the player
-func add_ship_component(new_component) -> void:
+func add_ship_component(new_component: ShipComponent) -> void:
 	add_child(new_component)
 	components.append(new_component)
+
+# Remove a component from the player
+func remove_ship_component(to_remove: ShipComponent) -> void:
+	components.erase(to_remove)
+	to_remove.queue_free()

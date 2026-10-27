@@ -2,25 +2,35 @@
 
 [ext_resource type="Script" uid="uid://chjuu8dgmirsq" path="res://Entities/Player/Components/Thrusters/thruster.gd" id="1_k51gw"]
 [ext_resource type="Texture2D" uid="uid://bdex2ab04c5ro" path="res://Entities/Player/Assets/thruster.png" id="2_4kd13"]
-[ext_resource type="Script" uid="uid://8awku0sdu4u5" path="res://Entities/Player/Components/component_slot.gd" id="3_k51gw"]
+[ext_resource type="PackedScene" uid="uid://du4gf8fsml5rv" path="res://Entities/Player/Components/ComponentSprite.tscn" id="2_use4x"]
+[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Player/Components/ComponentSlot.tscn" id="3_u0p2q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k51gw"]
 radius = 8.0
 height = 64.0
 
-[node name="Thruster" type="Area2D" unique_id=525355255]
+[node name="Thruster" type="Area2D" unique_id=525355255 node_paths=PackedStringArray("connection_points", "collision_shape", "sprite")]
 script = ExtResource("1_k51gw")
+connection_points = [NodePath("ComponentSlot"), NodePath("ComponentSlot2")]
+component_size = 2
+collision_shape = NodePath("CollisionShape2D")
+sprite = NodePath("ComponentSprite")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1645755509]
+[node name="ComponentSprite" parent="." unique_id=1015244419 instance=ExtResource("2_use4x")]
 position = Vector2(8, 4)
-rotation = -3.1415925
+rotation = 3.1415927
 texture = ExtResource("2_4kd13")
-
-[node name="ConnPoint1" type="Node2D" parent="." unique_id=2073068038]
-position = Vector2(16, 0)
-script = ExtResource("3_k51gw")
-max_size = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2071249436]
 position = Vector2(8, 4)
 shape = SubResource("CapsuleShape2D_k51gw")
+
+[node name="ComponentSlot" parent="." unique_id=1604551304 instance=ExtResource("3_u0p2q")]
+max_size = 3
+max_distance = 25.0
+max_connections = 2
+
+[node name="ComponentSlot2" parent="." unique_id=889175589 instance=ExtResource("3_u0p2q")]
+position = Vector2(16, 0)
+max_size = 2
+max_distance = 20.0

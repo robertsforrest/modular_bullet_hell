@@ -2,32 +2,41 @@
 
 [ext_resource type="Script" uid="uid://bueh73buqtr6y" path="res://Entities/Player/Components/Wings/wing.gd" id="1_s51pi"]
 [ext_resource type="Texture2D" uid="uid://c42cdnd15rtr7" path="res://Entities/Player/Assets/wing_1.png" id="2_6xhmx"]
-[ext_resource type="Script" uid="uid://8awku0sdu4u5" path="res://Entities/Player/Components/component_slot.gd" id="3_6xhmx"]
+[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Player/Components/ComponentSlot.tscn" id="3_3t30h"]
+[ext_resource type="PackedScene" uid="uid://du4gf8fsml5rv" path="res://Entities/Player/Components/ComponentSprite.tscn" id="4_gajua"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bs1o3"]
 radius = 16.0
 height = 72.0
 
-[node name="Wing" type="Area2D" unique_id=79534973 node_paths=PackedStringArray("connection_points", "collision_shape")]
+[node name="Wing" type="Area2D" unique_id=79534973 node_paths=PackedStringArray("connection_points", "collision_shape", "sprite")]
 script = ExtResource("1_s51pi")
-connection_points = [NodePath("ConnPoint1"), NodePath("ConnPoint2")]
+connection_points = [NodePath("ComponentSlot"), NodePath("ComponentSlot2")]
 component_size = 2
 collision_shape = NodePath("CollisionShape2D")
+sprite = NodePath("ComponentSprite")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=530769618]
+[node name="ComponentSprite" parent="." unique_id=1015244419 instance=ExtResource("4_gajua")]
 position = Vector2(8, 4)
 texture = ExtResource("2_6xhmx")
-
-[node name="ConnPoint1" type="Node2D" parent="." unique_id=327500651]
-position = Vector2(28, 0)
-script = ExtResource("3_6xhmx")
-max_size = 2
-
-[node name="ConnPoint2" type="Node2D" parent="." unique_id=124955927]
-position = Vector2(12, -12)
-script = ExtResource("3_6xhmx")
-max_size = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1734066212]
 position = Vector2(12, 4)
 shape = SubResource("CapsuleShape2D_bs1o3")
+
+[node name="ComponentSlot" parent="." unique_id=1604551304 instance=ExtResource("3_3t30h")]
+position = Vector2(-4, -16)
+max_size = 3
+max_distance = 60.0
+max_connections = 2
+
+[node name="ComponentSlot2" parent="." unique_id=632800591 instance=ExtResource("3_3t30h")]
+position = Vector2(28, -12)
+max_size = 3
+max_distance = 30.0
+max_connections = 2
+
+[node name="ComponentSlot3" parent="." unique_id=1004697927 instance=ExtResource("3_3t30h")]
+position = Vector2(28, 16)
+max_size = 1
+max_distance = 20.0

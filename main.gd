@@ -3,8 +3,23 @@ extends Node2D
 @export var player: Node2D
 @export var camera: Camera2D
 @export var enemy_factory: Node
+@export var player_edit: Node2D
+
+const player_edit_tscn = preload("res://PlayerEdit.tscn")
+
+func _ready() -> void:
+	player_edit.player = player # Pass player to editor logic
 
 func _process(delta: float) -> void:
+	# Real inputs
+	if (Input.is_action_just_pressed("toggle_edit")):
+		if (player_edit == null):
+			player_edit = player_edit_tscn.instantiate()
+			player_edit.player = player # Pass reference to player for editing
+			add_child(player_edit)
+		else:
+			player_edit.end_editing()
+	# Debug inputs
 	if (Input.is_action_just_pressed("debug_2")):
 		var new_enemy = enemy_factory.generate_enemy()
 		add_child(new_enemy)
