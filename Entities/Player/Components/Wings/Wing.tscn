@@ -3,18 +3,20 @@
 [ext_resource type="Script" uid="uid://bueh73buqtr6y" path="res://Entities/Player/Components/Wings/wing.gd" id="1_s51pi"]
 [ext_resource type="Texture2D" uid="uid://c42cdnd15rtr7" path="res://Entities/Player/Assets/wing_1.png" id="2_6xhmx"]
 [ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Player/Components/ComponentSlot.tscn" id="3_3t30h"]
+[ext_resource type="PackedScene" uid="uid://du4gf8fsml5rv" path="res://Entities/Player/Components/ComponentSprite.tscn" id="4_gajua"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bs1o3"]
 radius = 16.0
 height = 72.0
 
-[node name="Wing" type="Area2D" unique_id=79534973 node_paths=PackedStringArray("connection_points", "collision_shape")]
+[node name="Wing" type="Area2D" unique_id=79534973 node_paths=PackedStringArray("connection_points", "collision_shape", "sprite")]
 script = ExtResource("1_s51pi")
 connection_points = [NodePath("ComponentSlot"), NodePath("ComponentSlot2")]
 component_size = 2
 collision_shape = NodePath("CollisionShape2D")
+sprite = NodePath("ComponentSprite")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=530769618]
+[node name="ComponentSprite" parent="." unique_id=1015244419 instance=ExtResource("4_gajua")]
 position = Vector2(8, 4)
 texture = ExtResource("2_6xhmx")
 

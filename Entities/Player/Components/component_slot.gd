@@ -17,9 +17,9 @@ func _ready() -> void:
 	connection_lines.append(conn_line)
 	if (max_connections > 1):
 		for i in range(max_connections-1):
-			print("Looping: " + str(i))
+			#print("Looping: " + str(i))
 			connection_lines.append(conn_line.duplicate())
-	print("Connection line graphics: " + str(connection_lines))
+	#print("Connection line graphics: " + str(connection_lines))
 
 # Get the SHIP (NOT the ShipComponent) this slot belongs to
 # TODO: we will NEED a better way to handle this! for now though, this should work, but
@@ -77,7 +77,8 @@ func draw_connection_lines() -> void:
 func get_connected_components() -> Array[ShipComponent]:
 	var comp: Array[ShipComponent] = []
 	for point in connected_points:
-		var add_comp = point.get_parent() # TODO: hard-coded get_parent() naughty naughty naughty!
-		if (!comp.has(add_comp)):
-			comp.append(add_comp)
+		if (point != null):
+			var add_comp = point.get_parent() # TODO: hard-coded get_parent() naughty naughty naughty!
+			if (!comp.has(add_comp)):
+				comp.append(add_comp)
 	return comp

@@ -22,6 +22,9 @@ func _process(delta) -> void:
 	# Check for grid snap toggle
 	if (Input.is_action_just_pressed("toggle_editor_snap")):
 		grid_snap = !grid_snap
+	# Show warnings on any unconnected components in the player
+	for component in player.components:
+		component.sprite.set_warning(!component.is_connected_to_core())
 	# Run part_selected code if applicable
 	if (part_selected != null):
 		# Set part position to mouse position

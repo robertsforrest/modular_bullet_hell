@@ -31,6 +31,10 @@ func _process(delta: float) -> void:
 	if (!is_paused):
 		for component in components:
 			component.process(delta)
+	# Debug input in editor
+	else:
+		if (Input.is_action_just_pressed("debug_1")):
+			print(components[5].is_connected_to_core()) # This will be LaserGun2
 
 # Try movement w/ no fancy accel - thrusters just influence max speed
 func do_movement_no_accel(delta: float) -> void:

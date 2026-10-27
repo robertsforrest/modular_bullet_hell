@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://7dq1lynqq3u"]
 
 [ext_resource type="Script" uid="uid://du2bsv5hfl72g" path="res://Entities/Player/Components/player_core.gd" id="1_lphqv"]
+[ext_resource type="PackedScene" uid="uid://du4gf8fsml5rv" path="res://Entities/Player/Components/ComponentSprite.tscn" id="2_5878l"]
 [ext_resource type="Texture2D" uid="uid://bcrb6ys310kgm" path="res://Entities/Player/Assets/player_base.png" id="2_lx1vp"]
 [ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Player/Components/ComponentSlot.tscn" id="3_5878l"]
 
@@ -8,13 +9,15 @@
 radius = 20.0
 height = 56.0
 
-[node name="PlayerCore" type="Area2D" unique_id=605424737 node_paths=PackedStringArray("connection_points") groups=["ship_cores"]]
+[node name="PlayerCore" type="Area2D" unique_id=605424737 node_paths=PackedStringArray("connection_points", "collision_shape", "sprite") groups=["ship_cores"]]
 z_index = 1
 script = ExtResource("1_lphqv")
 connection_points = [NodePath("ComponentSlot"), NodePath("ComponentSlot2")]
-component_size = 2
+component_size = 3
+collision_shape = NodePath("CollisionShape2D")
+sprite = NodePath("ComponentSprite")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2130130285]
+[node name="ComponentSprite" parent="." unique_id=1015244419 instance=ExtResource("2_5878l")]
 position = Vector2(0, 8)
 texture = ExtResource("2_lx1vp")
 

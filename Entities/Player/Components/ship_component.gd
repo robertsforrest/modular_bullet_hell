@@ -10,6 +10,7 @@ signal part_selected(part: ShipComponent)
 @export var connection_points: Array[ComponentSlot]
 @export var component_size: Enum.component_size
 @export var collision_shape: CollisionShape2D
+@export var sprite: ComponentSprite
 
 # Internal variables
 @onready var mouse_over: bool = false
@@ -53,6 +54,36 @@ func get_destroyed() -> void:
 # Handle area entered code; override in child nodes
 func _on_area_entered(area: Area2D) -> void:
 	pass
+
+# Recursively parses all node connections to determine whether a path exists from
+# this node to the ship's core; used for detecting orphaned parts in combat to break
+# them off from the ship and to validate player ship designs in the editor
+# Takes an array of components to exclude from the recursive search as an argument; this defaults to
+# nothing for the initial call but gets expanded as we recurse down the nodes to avoid circular
+# recursion logic where a part is connected to another part by more than one anchor node
+func is_connected_to_core(exclude: Array[ShipComponent] = []) -> bool:
+	if (is_in_group("ship_cores")):
+		return true
+	else:
+		# Add this node to the exclusions for recursion
+		exclude.append(self)
+		var recurse_components = get_all_connected_components()
+		# Filter out the exclusion list from the recursion tree
+		recurse_components = recurse_components.filter(func(comp): return !exclude.has(comp))
+		for component in recurse_components:
+			if (component.is_connected_to_core(exclude)):
+				return true
+	# Base return case to allow stack to unwind after attacking all possible paths
+	return false
+
+# Get all other components connected to ANY component slot on this part
+func get_all_connected_components() -> Array[ShipComponent]:
+	var all_components: Array[ShipComponent] = []
+	for slot in connection_points:
+		for component in slot.get_connected_components():
+			if (!all_components.has(component)):
+				all_components.append(component)
+	return all_components
 
 # Handle input events for player ship component click'n'drag
 # TODO: add more checks here to ensure shit isn't grabbed erroneously in combat
