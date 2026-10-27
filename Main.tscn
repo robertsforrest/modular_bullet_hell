@@ -3,18 +3,24 @@
 [ext_resource type="PackedScene" uid="uid://cton2g7db78di" path="res://Entities/Player/Player.tscn" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://dr76c8jcliu7t" path="res://main.gd" id="1_uu6xs"]
 [ext_resource type="Script" uid="uid://dycix7gb5055g" path="res://Entities/Enemies/enemy_factory.gd" id="3_r0du0"]
+[ext_resource type="Script" uid="uid://dx3ffvivoomx2" path="res://player_edit.gd" id="4_cm0pq"]
 
-[node name="Main" type="Node2D" unique_id=1605391203 node_paths=PackedStringArray("player", "camera", "enemy_factory")]
+[node name="Main" type="Node2D" unique_id=1605391203 node_paths=PackedStringArray("player", "camera", "enemy_factory", "player_edit")]
 script = ExtResource("1_uu6xs")
 player = NodePath("Player")
 camera = NodePath("Camera2D")
 enemy_factory = NodePath("Node")
+player_edit = NodePath("PlayerEdit")
 
 [node name="Player" parent="." unique_id=2004784632 instance=ExtResource("1_glv2v")]
-position = Vector2(976, 632)
+position = Vector2(-52, 12)
+
+[node name="PlayerEdit" type="Node2D" parent="." unique_id=2087807536 node_paths=PackedStringArray("player")]
+script = ExtResource("4_cm0pq")
+player = NodePath("../Player")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1373726602]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(2, 2)
 
 [node name="Node" type="Node" parent="." unique_id=2127648709]
 script = ExtResource("3_r0du0")

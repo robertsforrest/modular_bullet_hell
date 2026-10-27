@@ -11,15 +11,26 @@ extends Node2D
 @export var max_velocity: float = 1500.0
 @onready var velocity: Vector2 = Vector2.ZERO
 @onready var accel: Vector2 = Vector2.ZERO
-@onready var components: Array[ShipComponent] = []
+@export var components: Array[ShipComponent] = [] # TODO: this should be programmatic, not exposed to the editor
+
+# Internal variables
+@onready var is_paused: bool = false
 
 # Gameplay loop
+# Hard-coded pause variable in player allows movement to be halted without
+# interrupting processing on child ShipComponents in the ship editor
 func _physics_process(delta: float) -> void:
-	# Look towards mouse position
-	look_at(get_global_mouse_position())
-	rotation_degrees -= 90 # Offset to point straight - TODO: magic number naughty naughty!
-	do_movement_with_accel(delta)
-	#do_movement_no_accel(delta)
+	if (!is_paused):
+		# Look towards mouse position
+		look_at(get_global_mouse_position())
+		rotation_degrees -= 90 # Offset to point straight - TODO: magic number naughty naughty!
+		do_movement_with_accel(delta)
+		#do_movement_no_accel(delta)
+		
+func _process(delta: float) -> void:
+	if (!is_paused):
+		for component in components:
+			component.process(delta)
 
 # Try movement w/ no fancy accel - thrusters just influence max speed
 func do_movement_no_accel(delta: float) -> void:
@@ -47,10 +58,6 @@ func do_movement_with_accel(delta: float) -> void:
 	# Apply velocity to position
 	velocity = velocity.limit_length(max_velocity)
 	position += velocity * delta
-
-func _process(delta: float) -> void:
-	for component in components:
-		component.process(delta)
 
 # Add a new component to the player
 func add_ship_component(new_component) -> void:

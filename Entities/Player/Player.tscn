@@ -2,9 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://7dq1lynqq3u" path="res://Entities/Player/Components/PlayerCore.tscn" id="1_e5kic"]
 [ext_resource type="Script" uid="uid://bek6h2rqk2yxn" path="res://Entities/Player/player.gd" id="1_ww0jn"]
+[ext_resource type="PackedScene" uid="uid://dym57mo5kfg5g" path="res://Entities/Player/Components/Wings/Wing.tscn" id="3_vweq0"]
 
-[node name="Player" type="Node2D" unique_id=2004784632 node_paths=PackedStringArray("ship_core")]
+[node name="Player" type="Node2D" unique_id=2004784632 node_paths=PackedStringArray("ship_core", "components")]
 script = ExtResource("1_ww0jn")
 ship_core = NodePath("PlayerCore")
+components = [NodePath("Wing")]
 
 [node name="PlayerCore" parent="." unique_id=1889912984 instance=ExtResource("1_e5kic")]
+
+[node name="Wing" parent="." unique_id=79534973 instance=ExtResource("3_vweq0")]
+position = Vector2(104, 8)
