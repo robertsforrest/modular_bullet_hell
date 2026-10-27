@@ -64,6 +64,11 @@ func do_movement_with_accel(delta: float) -> void:
 	position += velocity * delta
 
 # Add a new component to the player
-func add_ship_component(new_component) -> void:
+func add_ship_component(new_component: ShipComponent) -> void:
 	add_child(new_component)
 	components.append(new_component)
+
+# Remove a component from the player
+func remove_ship_component(to_remove: ShipComponent) -> void:
+	components.erase(to_remove)
+	to_remove.queue_free()

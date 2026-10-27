@@ -2,31 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://7dq1lynqq3u" path="res://Entities/Player/Components/PlayerCore.tscn" id="1_e5kic"]
 [ext_resource type="Script" uid="uid://bek6h2rqk2yxn" path="res://Entities/Player/player.gd" id="1_ww0jn"]
-[ext_resource type="PackedScene" uid="uid://dym57mo5kfg5g" path="res://Entities/Player/Components/Wings/Wing.tscn" id="3_vweq0"]
-[ext_resource type="PackedScene" uid="uid://lumark28yxtc" path="res://Entities/Player/Components/Thrusters/Thruster.tscn" id="4_1des2"]
-[ext_resource type="PackedScene" uid="uid://dy8deqmtlgppq" path="res://Entities/Player/Components/Guns/LaserGun.tscn" id="5_an6q6"]
 
-[node name="Player" type="Node2D" unique_id=2004784632 node_paths=PackedStringArray("ship_core", "components")]
+[node name="Player" type="Node2D" unique_id=2004784632 node_paths=PackedStringArray("ship_core")]
 script = ExtResource("1_ww0jn")
 ship_core = NodePath("PlayerCore")
-components = [NodePath("Wing"), NodePath("Wing2"), NodePath("Thruster"), NodePath("Thruster2"), NodePath("LaserGun"), NodePath("LaserGun2")]
 
 [node name="PlayerCore" parent="." unique_id=1889912984 instance=ExtResource("1_e5kic")]
-
-[node name="Wing" parent="." unique_id=79534973 instance=ExtResource("3_vweq0")]
-position = Vector2(104, 8)
-
-[node name="Wing2" parent="." unique_id=905684217 instance=ExtResource("3_vweq0")]
-position = Vector2(-176, -8)
-
-[node name="Thruster" parent="." unique_id=525355255 instance=ExtResource("4_1des2")]
-position = Vector2(64, -120)
-
-[node name="Thruster2" parent="." unique_id=2047471573 instance=ExtResource("4_1des2")]
-position = Vector2(-112, -128)
-
-[node name="LaserGun" parent="." unique_id=202339197 instance=ExtResource("5_an6q6")]
-position = Vector2(-216, -112)
-
-[node name="LaserGun2" parent="." unique_id=2091836540 instance=ExtResource("5_an6q6")]
-position = Vector2(192, -88)

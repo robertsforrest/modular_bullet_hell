@@ -16,9 +16,11 @@ func _ready() -> void:
 	# Generate necessary Line2Ds for connection points
 	connection_lines.append(conn_line)
 	if (max_connections > 1):
-		for i in range(max_connections-1):
+		for i in range(max_connections):
 			#print("Looping: " + str(i))
-			connection_lines.append(conn_line.duplicate())
+			var new_line = conn_line.duplicate()
+			add_child(new_line)
+			connection_lines.append(new_line)
 	#print("Connection line graphics: " + str(connection_lines))
 
 # Get the SHIP (NOT the ShipComponent) this slot belongs to
@@ -30,8 +32,8 @@ func get_parent_ship() -> Node2D:
 # Code for seeking compatible slots
 # Hope you're hungry for a piping hot spaghetti, dear Christ
 func seek_connections() -> void:
+	connected_points.fill(null) # TODO: this seems like a huge waste of compute? but it do work lmao
 	for i in range(max_connections):
-		connected_points.fill(null) # TODO: this seems like a huge waste of compute? but it do work lmao
 		var closest_slot = null
 		for slot in get_tree().get_nodes_in_group("component_slots"):
 			# Check that the slot belongs to the same SHIP, but NOT the same ShipComponent,
@@ -50,6 +52,7 @@ func seek_connections() -> void:
 		# With closest slot grabbed, set index in the array
 		# If no slot was found, value will be overridden with the NULL from initialization in the loop
 		#print("Adding closest slot: " + str(closest_slot) + " at index " + str(i))
+		#print(connected_points)
 		connected_points[i] = closest_slot
 		#print(connected_points)
 
@@ -62,6 +65,7 @@ func draw_connection_lines() -> void:
 			# If no connection is present in this slot, clear out the line graphics
 			connection_lines[i].clear_points()
 		else:
+			#print("Drawing line " + str(i) + " from " + str(connected_points[i]) + " using " + str(connection_lines[i]))
 			# Draw a line to the connected point at this index
 			# Base target - diff between target position and self position
 			var targ_pos: Vector2 = connected_points[i].global_position-self.global_position

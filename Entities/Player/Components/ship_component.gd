@@ -61,6 +61,10 @@ func _on_area_entered(area: Area2D) -> void:
 # Takes an array of components to exclude from the recursive search as an argument; this defaults to
 # nothing for the initial call but gets expanded as we recurse down the nodes to avoid circular
 # recursion logic where a part is connected to another part by more than one anchor node
+# TODO: This does have a miss case - if a component is GRABBED BY (not ATTACHED TO) another component
+# that IS connected to the core, but this part cannot reciprocate the connection (due to a shorter max_distance)
+# it will be considered orphaned! This is going to be enough of a pain in the dick I'm willing to put it down
+# for the time being for further prototyping of the actual gameplay before I get further into the weeds on this shit
 func is_connected_to_core(exclude: Array[ShipComponent] = []) -> bool:
 	if (is_in_group("ship_cores")):
 		return true

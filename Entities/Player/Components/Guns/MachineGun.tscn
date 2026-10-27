@@ -10,11 +10,12 @@
 radius = 8.0
 height = 48.0
 
-[node name="MachineGun" type="Area2D" unique_id=841117510 node_paths=PackedStringArray("cooldown_timer", "collision_shape", "sprite")]
+[node name="MachineGun" type="Area2D" unique_id=841117510 node_paths=PackedStringArray("cooldown_timer", "connection_points", "collision_shape", "sprite")]
 z_index = 1
 script = ExtResource("1_0fojp")
 bullet_tscn = ExtResource("2_tvpx7")
 cooldown_timer = NodePath("CooldownTimer")
+connection_points = [NodePath("ComponentSlot")]
 component_size = 2
 collision_shape = NodePath("CollisionShape2D")
 sprite = NodePath("ComponentSprite")

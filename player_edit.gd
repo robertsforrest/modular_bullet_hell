@@ -17,6 +17,20 @@ func _ready() -> void:
 	for component in player.components:
 		component.part_selected.connect(_on_part_selected)
 
+# Called from main to end the player editing and return to gameplay
+func end_editing() -> void:
+	# TODO: add a check here to give an alert for orphaned components in the player
+	# For now though they just get yoinked
+	var remove_components: Array[ShipComponent] = []
+	for component in player.components:
+		if (!component.is_connected_to_core()):
+			remove_components.append(component)
+	for component in remove_components:
+		player.remove_ship_component(component)
+	# Return control to the player and leave the scene tree
+	player.is_paused = false
+	queue_free()
+
 # Game loop
 func _process(delta) -> void:
 	# Check for grid snap toggle
