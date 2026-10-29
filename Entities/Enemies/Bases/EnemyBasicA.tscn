@@ -21,7 +21,7 @@ position = Vector2(-24, 0)
 scale = Vector2(-1, 1)
 
 [node name="EnemyLaserGun" parent="." unique_id=2092387067 instance=ExtResource("4_r1h5y")]
-position = Vector2(-24, 16)
+position = Vector2(-56, -8)
 
 [node name="EnemyLaserGun2" parent="." unique_id=921001832 instance=ExtResource("4_r1h5y")]
-position = Vector2(24, 16)
+position = Vector2(56, -8)

@@ -21,6 +21,7 @@ polygon = PackedVector2Array(24, 8, 32, -20, 16, -20, -4, -36, -16, -36, -4, -8,
 position = Vector2(-8, -16)
 max_size = 3
 max_distance = 30.0
+max_connections = 2
 
 [node name="ComponentSlot2" parent="." unique_id=345208359 instance=ExtResource("3_aiehj")]
 position = Vector2(-8, 32)

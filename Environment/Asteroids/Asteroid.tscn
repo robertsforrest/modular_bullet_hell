@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bmvqkfiw1dnw0"]
 
 [ext_resource type="Script" uid="uid://cmcj60u5t06e4" path="res://Environment/Asteroids/asteroid.gd" id="1_8j2xt"]
-[ext_resource type="Texture2D" uid="uid://brtj8aqsp7204" path="res://Environment/Asteroids/asteroid_large.png" id="2_7qpmh"]
+[ext_resource type="Texture2D" uid="uid://brtj8aqsp7204" path="res://Environment/Assets/asteroid_large.png" id="2_7qpmh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8j2xt"]
 resource_local_to_scene = true

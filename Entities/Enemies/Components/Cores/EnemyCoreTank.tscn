@@ -7,11 +7,13 @@
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_sgbnf"]
 points = PackedVector2Array(-32, -24, 32, -24, 32, 8, 0, 32, -32, 8)
 
-[node name="EnemyCoreTank" type="Area2D" unique_id=710239867 node_paths=PackedStringArray("connection_points")]
+[node name="EnemyCoreTank" type="Area2D" unique_id=710239867 node_paths=PackedStringArray("connection_points", "collision_shape") groups=["ship_cores"]]
 z_index = 1
 script = ExtResource("1_4ftcs")
 hp = 10.0
 connection_points = [NodePath("ComponentSlot"), NodePath("ComponentSlot2"), NodePath("ComponentSlot3"), NodePath("ComponentSlot4"), NodePath("ComponentSlot5"), NodePath("ComponentSlot6")]
+component_size = 3
+collision_shape = NodePath("CollisionShape2D")
 metadata/_custom_type_script = "uid://b6yc6accyy626"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=504533531]
@@ -22,18 +24,24 @@ shape = SubResource("ConvexPolygonShape2D_sgbnf")
 
 [node name="ComponentSlot" parent="." unique_id=1604551304 instance=ExtResource("3_4ftcs")]
 position = Vector2(-32, -16)
+max_size = 3
 
 [node name="ComponentSlot2" parent="." unique_id=984594500 instance=ExtResource("3_4ftcs")]
 position = Vector2(-32, 8)
+max_size = 3
 
 [node name="ComponentSlot3" parent="." unique_id=1951246519 instance=ExtResource("3_4ftcs")]
 position = Vector2(32, -16)
+max_size = 3
 
 [node name="ComponentSlot4" parent="." unique_id=1576419308 instance=ExtResource("3_4ftcs")]
 position = Vector2(32, 8)
+max_size = 3
 
 [node name="ComponentSlot5" parent="." unique_id=1270017746 instance=ExtResource("3_4ftcs")]
 position = Vector2(-16, 16)
+max_size = 3
 
 [node name="ComponentSlot6" parent="." unique_id=1394700947 instance=ExtResource("3_4ftcs")]
 position = Vector2(16, 16)
+max_size = 3

@@ -8,10 +8,12 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldsc7"]
 radius = 8.0
 
-[node name="EnemyLaserGun" type="Area2D" unique_id=2092387067 node_paths=PackedStringArray("cooldown_timer", "collision_shape")]
+[node name="EnemyLaserGun" type="Area2D" unique_id=2092387067 node_paths=PackedStringArray("cooldown_timer", "connection_points", "collision_shape")]
 script = ExtResource("1_ldsc7")
 bullet_tscn = ExtResource("2_wrh81")
 cooldown_timer = NodePath("CooldownTimer")
+connection_points = [NodePath("ComponentSlot")]
+component_size = 1
 collision_shape = NodePath("CollisionShape2D")
 metadata/_custom_type_script = "uid://cifvb8ffvv5kn"
 
@@ -27,3 +29,5 @@ shape = SubResource("CapsuleShape2D_ldsc7")
 one_shot = true
 
 [node name="ComponentSlot" parent="." unique_id=1604551304 instance=ExtResource("4_ipuvy")]
+max_distance = 30.0
+max_connections = 2

@@ -27,6 +27,7 @@ shape = SubResource("CapsuleShape2D_wuuch")
 position = Vector2(0, -24)
 max_size = 3
 max_distance = 30.0
+max_connections = 2
 
 [node name="ComponentSlot2" parent="." unique_id=345208359 instance=ExtResource("3_dgsvj")]
 position = Vector2(0, 24)

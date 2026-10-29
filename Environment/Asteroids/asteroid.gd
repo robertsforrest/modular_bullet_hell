@@ -2,9 +2,9 @@ extends Area2D
 
 const asteroid_tscn: PackedScene = preload("res://Environment/Asteroids/Asteroid.tscn")
 const asteroid_textures: Dictionary = {
-	Enum.asteroid_size.SMALL: preload("res://Environment/Asteroids/asteroid_small.png"),
-	Enum.asteroid_size.MEDIUM: preload("res://Environment/Asteroids/asteroid_medium.png"),
-	Enum.asteroid_size.LARGE: preload("res://Environment/Asteroids/asteroid_large.png"),
+	Enum.asteroid_size.SMALL: preload("res://Environment/Assets/asteroid_small.png"),
+	Enum.asteroid_size.MEDIUM: preload("res://Environment/Assets/asteroid_medium.png"),
+	Enum.asteroid_size.LARGE: preload("res://Environment/Assets/asteroid_large.png"),
 }
 const collision_radius: Dictionary = {
 	Enum.asteroid_size.SMALL: 12.0,
@@ -52,6 +52,7 @@ func _on_area_entered(area: Area2D) -> void:
 		# Apply some damage to the component
 		area.take_damage(1.0) # TODO: magic number naughty naughty!
 		hit_entity.velocity = hit_entity.velocity.bounce(self.global_position.direction_to(area.global_position))
+		self.direction = self.direction.bounce(area.global_position.direction_to(self.global_position))
 
 # Called when the asteroid gets killed
 func get_destroyed() -> void:

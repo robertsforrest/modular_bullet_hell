@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://cton2g7db78di" path="res://Entities/Player/Player.tscn" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://dr76c8jcliu7t" path="res://main.gd" id="1_uu6xs"]
 [ext_resource type="Script" uid="uid://dycix7gb5055g" path="res://Entities/Enemies/enemy_factory.gd" id="3_r0du0"]
-[ext_resource type="PackedScene" uid="uid://bmvqkfiw1dnw0" path="res://Environment/Asteroids/Asteroid.tscn" id="4_cm0pq"]
 
 [node name="Main" type="Node2D" unique_id=1605391203 node_paths=PackedStringArray("player", "camera", "enemy_factory")]
 script = ExtResource("1_uu6xs")
@@ -18,9 +17,3 @@ position = Vector2(-52, 12)
 
 [node name="Node" type="Node" parent="." unique_id=2127648709]
 script = ExtResource("3_r0du0")
-
-[node name="Asteroid" parent="." unique_id=922854381 instance=ExtResource("4_cm0pq")]
-position = Vector2(-624, -336)
-
-[node name="Asteroid2" parent="." unique_id=1087100330 instance=ExtResource("4_cm0pq")]
-position = Vector2(-560, -144)

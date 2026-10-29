@@ -21,9 +21,12 @@ func _ready() -> void:
 	# Link together existing components added either in the editor or
 	# programmatically in enemy_factory before being added to the scene tree
 	for component in components:
-		print("Adding " + str(component) + " to the enemy")
+		#print("Adding " + str(component) + " to the enemy")
 		component.run_slots_for_editor()
 		component.part_destroyed.connect(_on_part_destroyed)
+	# Debug output
+	#for component in components:
+		#print("Component: " + str(component) + " is connected? " + str(component.is_connected_to_core()))
 
 # Game loop - just pass along to component code
 func _physics_process(delta: float) -> void:

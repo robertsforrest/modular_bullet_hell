@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c0gef8ubj4qmc" path="res://Entities/Enemies/Components/Wings/EnemyWingC.tscn" id="4_1yeqo"]
 [ext_resource type="PackedScene" uid="uid://g0qfkxs5vpij" path="res://Entities/Enemies/Components/Guns/EnemyLaserGun.tscn" id="5_j25fd"]
 
-[node name="EnemyTankB" type="Node2D" unique_id=1009218630 node_paths=PackedStringArray("ship_core", "components")]
+[node name="EnemyTankB" type="Node2D" unique_id=1009218630 node_paths=PackedStringArray("ship_core", "components") groups=["enemies"]]
 script = ExtResource("1_wr6xg")
 ship_core = NodePath("EnemyCoreTank")
 components = [NodePath("EnemyWingA"), NodePath("EnemyWingA2"), NodePath("EnemyWingC"), NodePath("EnemyWingC2"), NodePath("EnemyLaserGun"), NodePath("EnemyLaserGun2")]
@@ -33,7 +33,7 @@ rotation = 0.2617994
 scale = Vector2(-1, 1)
 
 [node name="EnemyLaserGun" parent="." unique_id=2092387067 instance=ExtResource("5_j25fd")]
-position = Vector2(-44, -24)
+position = Vector2(-60, 0)
 
 [node name="EnemyLaserGun2" parent="." unique_id=112617667 instance=ExtResource("5_j25fd")]
-position = Vector2(44, -24)
+position = Vector2(56, 0)
