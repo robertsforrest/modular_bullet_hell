@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cpdc5kg56nr5g"]
+
+[ext_resource type="Script" uid="uid://b6yc6accyy626" path="res://Entities/Enemies/Components/enemy_component.gd" id="1_3wgpw"]
+[ext_resource type="Texture2D" uid="uid://dwpk8ex7jyygn" path="res://Entities/Enemies/Assets/enemy_wing_1.png" id="2_gkx0d"]
+[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Player/Components/ComponentSlot.tscn" id="3_dgsvj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wuuch"]
+radius = 12.0
+height = 72.0
+
+[node name="EnemyWingA" type="Area2D" unique_id=227823163 node_paths=PackedStringArray("connection_points", "collision_shape")]
+script = ExtResource("1_3wgpw")
+connection_points = [NodePath("ComponentSlot"), NodePath("ComponentSlot2"), NodePath("ComponentSlot3")]
+component_size = 2
+collision_shape = NodePath("CollisionShape2D")
+metadata/_custom_type_script = "uid://b6yc6accyy626"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=143356181]
+position = Vector2(16, -4)
+texture = ExtResource("2_gkx0d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1460320825]
+position = Vector2(12, -4)
+shape = SubResource("CapsuleShape2D_wuuch")
+
+[node name="ComponentSlot" parent="." unique_id=1604551304 instance=ExtResource("3_dgsvj")]
+position = Vector2(0, -24)
+max_size = 3
+max_distance = 30.0
+
+[node name="ComponentSlot2" parent="." unique_id=345208359 instance=ExtResource("3_dgsvj")]
+position = Vector2(0, 24)
+max_size = 3
+max_distance = 30.0
+
+[node name="ComponentSlot3" parent="." unique_id=1625623229 instance=ExtResource("3_dgsvj")]
+position = Vector2(32, -24)
+max_size = 2
+max_distance = 20.0

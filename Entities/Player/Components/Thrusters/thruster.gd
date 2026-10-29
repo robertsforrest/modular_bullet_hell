@@ -1,4 +1,4 @@
-extends ShipComponent
+extends PlayerComponent
 
 @export var accel_spd: float = 200.0
 

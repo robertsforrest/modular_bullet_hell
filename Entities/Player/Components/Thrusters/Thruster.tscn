@@ -28,7 +28,6 @@ shape = SubResource("CapsuleShape2D_k51gw")
 [node name="ComponentSlot" parent="." unique_id=1604551304 instance=ExtResource("3_u0p2q")]
 max_size = 3
 max_distance = 25.0
-max_connections = 2
 
 [node name="ComponentSlot2" parent="." unique_id=889175589 instance=ExtResource("3_u0p2q")]
 position = Vector2(16, 0)

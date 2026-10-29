@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dhhactfo7i5w2"]
+
+[ext_resource type="Script" uid="uid://b6yc6accyy626" path="res://Entities/Enemies/Components/enemy_component.gd" id="1_mr44y"]
+[ext_resource type="Texture2D" uid="uid://d0e4solv7t7a6" path="res://Entities/Enemies/Assets/enemy_wing_2.png" id="2_87el2"]
+[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Player/Components/ComponentSlot.tscn" id="3_aiehj"]
+
+[node name="EnemyWingB" type="Area2D" unique_id=227823163 node_paths=PackedStringArray("connection_points")]
+script = ExtResource("1_mr44y")
+connection_points = [NodePath("ComponentSlot"), NodePath("ComponentSlot2"), NodePath("ComponentSlot3"), NodePath("ComponentSlot4")]
+component_size = 2
+metadata/_custom_type_script = "uid://b6yc6accyy626"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=143356181]
+position = Vector2(8, 0)
+texture = ExtResource("2_87el2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=717927541]
+polygon = PackedVector2Array(24, 8, 32, -20, 16, -20, -4, -36, -16, -36, -4, -8, -12, 36, 4, 36)
+
+[node name="ComponentSlot" parent="." unique_id=1604551304 instance=ExtResource("3_aiehj")]
+position = Vector2(-8, -16)
+max_size = 3
+max_distance = 30.0
+
+[node name="ComponentSlot2" parent="." unique_id=345208359 instance=ExtResource("3_aiehj")]
+position = Vector2(-8, 32)
+max_size = 3
+max_distance = 30.0
+
+[node name="ComponentSlot3" parent="." unique_id=1625623229 instance=ExtResource("3_aiehj")]
+position = Vector2(32, -16)
+max_size = 2
+max_distance = 20.0
+
+[node name="ComponentSlot4" parent="." unique_id=1892395653 instance=ExtResource("3_aiehj")]
+position = Vector2(16, 16)
+max_size = 2
+max_distance = 20.0

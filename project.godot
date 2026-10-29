@@ -33,6 +33,7 @@ player_bullets=""
 enemy_bullets=""
 component_slots=""
 ship_cores=""
+enemies=""
 
 [input]
 

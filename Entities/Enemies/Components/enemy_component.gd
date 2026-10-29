@@ -13,9 +13,5 @@ func physics_process(delta: float) -> void:
 # TODO: add code when a part is destroyed to set it adrift in space as a simple Sprite node
 func _on_area_entered(area: Area2D) -> void:
 	if (area.is_in_group("player_bullets")):
-		# TODO: add spark/damage/smoke/etc particles for visual juice
-		hp -= area.get_damage_amount()
-		# Check for death
-		if (hp <= 0):
-			get_destroyed()
+		self.take_damage(area.get_damage_amount())
 		area.queue_free()

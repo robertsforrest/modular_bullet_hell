@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b2vsm3y0glgeg"]
+
+[ext_resource type="Script" uid="uid://cj8lhywiahv3c" path="res://Entities/Enemies/Components/Cores/enemy_core_tank.gd" id="1_4ftcs"]
+[ext_resource type="Texture2D" uid="uid://ceonxh8qy1y6j" path="res://Entities/Enemies/Assets/enemy_core_tank.png" id="2_sgbnf"]
+[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Player/Components/ComponentSlot.tscn" id="3_4ftcs"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_sgbnf"]
+points = PackedVector2Array(-32, -24, 32, -24, 32, 8, 0, 32, -32, 8)
+
+[node name="EnemyCoreTank" type="Area2D" unique_id=710239867 node_paths=PackedStringArray("connection_points")]
+z_index = 1
+script = ExtResource("1_4ftcs")
+hp = 10.0
+connection_points = [NodePath("ComponentSlot"), NodePath("ComponentSlot2"), NodePath("ComponentSlot3"), NodePath("ComponentSlot4"), NodePath("ComponentSlot5"), NodePath("ComponentSlot6")]
+metadata/_custom_type_script = "uid://b6yc6accyy626"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=504533531]
+texture = ExtResource("2_sgbnf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2060833979]
+shape = SubResource("ConvexPolygonShape2D_sgbnf")
+
+[node name="ComponentSlot" parent="." unique_id=1604551304 instance=ExtResource("3_4ftcs")]
+position = Vector2(-32, -16)
+
+[node name="ComponentSlot2" parent="." unique_id=984594500 instance=ExtResource("3_4ftcs")]
+position = Vector2(-32, 8)
+
+[node name="ComponentSlot3" parent="." unique_id=1951246519 instance=ExtResource("3_4ftcs")]
+position = Vector2(32, -16)
+
+[node name="ComponentSlot4" parent="." unique_id=1576419308 instance=ExtResource("3_4ftcs")]
+position = Vector2(32, 8)
+
+[node name="ComponentSlot5" parent="." unique_id=1270017746 instance=ExtResource("3_4ftcs")]
+position = Vector2(-16, 16)
+
+[node name="ComponentSlot6" parent="." unique_id=1394700947 instance=ExtResource("3_4ftcs")]
+position = Vector2(16, 16)

@@ -5,8 +5,9 @@ extends Node2D
 @export var ship_core: EnemyComponent
 
 # Components
-@onready var components: Array[EnemyComponent]
-@onready var logic_components: Array[EnemyLogicComponent]
+# Open to the editor, but may also be set in ship_factory
+@export var components: Array[EnemyComponent]
+@export var logic_components: Array[EnemyLogicComponent]
 
 # Gameplay variables
 @onready var accel: Vector2 = Vector2.ZERO
@@ -14,6 +15,15 @@ extends Node2D
 @onready var accel_spd: float = 500.0
 @onready var max_accel: float = 100.0
 @onready var max_velocity: float = 400.0
+
+# Initialize
+func _ready() -> void:
+	# Link together existing components added either in the editor or
+	# programmatically in enemy_factory before being added to the scene tree
+	for component in components:
+		print("Adding " + str(component) + " to the enemy")
+		component.run_slots_for_editor()
+		component.part_destroyed.connect(_on_part_destroyed)
 
 # Game loop - just pass along to component code
 func _physics_process(delta: float) -> void:
@@ -52,6 +62,16 @@ func add_logic_component(new_component) -> void:
 
 # Hande part_destroyed signal from components
 func _on_part_destroyed(part: EnemyComponent) -> void:
-	print("Part destroyed: " + str(part.name))
 	# Check whether the core has been destroyed
+	if (part == ship_core):
+		queue_free()
+	# Check for orphaned components
+	var orphaned: Array[ShipComponent]
+	for component in components:
+		if (!component.is_connected_to_core()):
+			orphaned.append(component)
+	for orphan in orphaned:
+		components.erase(orphan)
+		orphan.queue_free()
+	# Remove from components list
 	components.erase(part)

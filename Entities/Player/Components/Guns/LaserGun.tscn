@@ -32,3 +32,4 @@ one_shot = true
 
 [node name="ComponentSlot" parent="." unique_id=1604551304 instance=ExtResource("4_jykxu")]
 max_distance = 30.0
+max_connections = 2

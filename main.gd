@@ -3,13 +3,11 @@ extends Node2D
 @export var player: Node2D
 @export var camera: Camera2D
 @export var enemy_factory: Node
-@export var player_edit: Node2D
+@onready var player_edit: Node2D = null
 
 const player_edit_tscn = preload("res://PlayerEdit.tscn")
 
-func _ready() -> void:
-	player_edit.player = player # Pass player to editor logic
-
+# Game loop
 func _process(delta: float) -> void:
 	# Real inputs
 	if (Input.is_action_just_pressed("toggle_edit")):

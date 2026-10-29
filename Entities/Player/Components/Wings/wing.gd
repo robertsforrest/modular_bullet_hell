@@ -1,1 +1,1 @@
-extends ShipComponent
+extends PlayerComponent

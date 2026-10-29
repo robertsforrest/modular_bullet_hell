@@ -6,3 +6,15 @@ enum component_size {
 	MEDIUM,
 	LARGE,
 }
+
+enum asteroid_size {
+	SMALL,
+	MEDIUM,
+	LARGE,
+}
+
+# Enumerates the types of logic nodes available to enemies
+enum enemy_logic_types {
+	AIM_AT_PLAYER,
+	CHASE_PLAYER,
+}

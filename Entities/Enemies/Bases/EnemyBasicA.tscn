@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dbcsqcvdqetws"]
+
+[ext_resource type="Script" uid="uid://xpvgq5txvuvp" path="res://Entities/Enemies/enemy.gd" id="1_1nrxt"]
+[ext_resource type="PackedScene" uid="uid://cv8j7gpmpeqwe" path="res://Entities/Enemies/Components/Cores/EnemyCoreBasic.tscn" id="2_qqxoc"]
+[ext_resource type="PackedScene" uid="uid://cpdc5kg56nr5g" path="res://Entities/Enemies/Components/Wings/EnemyWingA.tscn" id="3_kbqww"]
+[ext_resource type="PackedScene" uid="uid://g0qfkxs5vpij" path="res://Entities/Enemies/Components/Guns/EnemyLaserGun.tscn" id="4_r1h5y"]
+
+[node name="EnemyBasicA" type="Node2D" unique_id=1529625258 node_paths=PackedStringArray("ship_core", "components") groups=["enemies"]]
+script = ExtResource("1_1nrxt")
+ship_core = NodePath("EnemyCoreBasic")
+components = [NodePath("EnemyWing1"), NodePath("EnemyWing2"), NodePath("EnemyLaserGun"), NodePath("EnemyLaserGun2")]
+metadata/_custom_type_script = "uid://xpvgq5txvuvp"
+
+[node name="EnemyCoreBasic" parent="." unique_id=1613202619 instance=ExtResource("2_qqxoc")]
+
+[node name="EnemyWing1" parent="." unique_id=227823163 instance=ExtResource("3_kbqww")]
+position = Vector2(24, 0)
+
+[node name="EnemyWing2" parent="." unique_id=179456610 instance=ExtResource("3_kbqww")]
+position = Vector2(-24, 0)
+scale = Vector2(-1, 1)
+
+[node name="EnemyLaserGun" parent="." unique_id=2092387067 instance=ExtResource("4_r1h5y")]
+position = Vector2(-24, 16)
+
+[node name="EnemyLaserGun2" parent="." unique_id=921001832 instance=ExtResource("4_r1h5y")]
+position = Vector2(24, 16)
