@@ -11,7 +11,8 @@ height = 72.0
 
 [node name="Wing" type="Area2D" unique_id=79534973 node_paths=PackedStringArray("connection_points", "collision_shape", "sprite")]
 script = ExtResource("1_s51pi")
-connection_points = [NodePath("ComponentSlot"), NodePath("ComponentSlot2")]
+hp = 6.0
+connection_points = [NodePath("ComponentSlot"), NodePath("ComponentSlot2"), NodePath("ComponentSlot3")]
 component_size = 2
 collision_shape = NodePath("CollisionShape2D")
 sprite = NodePath("ComponentSprite")
@@ -27,7 +28,7 @@ shape = SubResource("CapsuleShape2D_bs1o3")
 [node name="ComponentSlot" parent="." unique_id=1604551304 instance=ExtResource("3_3t30h")]
 position = Vector2(-4, -16)
 max_size = 3
-max_distance = 60.0
+max_distance = 30.0
 max_connections = 2
 
 [node name="ComponentSlot2" parent="." unique_id=632800591 instance=ExtResource("3_3t30h")]

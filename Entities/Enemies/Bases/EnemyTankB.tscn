@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://ode5pxn8duej"]
+
+[ext_resource type="Script" uid="uid://xpvgq5txvuvp" path="res://Entities/Enemies/enemy.gd" id="1_wr6xg"]
+[ext_resource type="PackedScene" uid="uid://b2vsm3y0glgeg" path="res://Entities/Enemies/Components/Cores/EnemyCoreTank.tscn" id="2_y4iau"]
+[ext_resource type="PackedScene" uid="uid://cpdc5kg56nr5g" path="res://Entities/Enemies/Components/Wings/EnemyWingA.tscn" id="3_tk3uj"]
+[ext_resource type="PackedScene" uid="uid://c0gef8ubj4qmc" path="res://Entities/Enemies/Components/Wings/EnemyWingC.tscn" id="4_1yeqo"]
+[ext_resource type="PackedScene" uid="uid://g0qfkxs5vpij" path="res://Entities/Enemies/Components/Guns/EnemyLaserGun.tscn" id="5_j25fd"]
+
+[node name="EnemyTankB" type="Node2D" unique_id=1009218630 node_paths=PackedStringArray("ship_core", "components") groups=["enemies"]]
+script = ExtResource("1_wr6xg")
+ship_core = NodePath("EnemyCoreTank")
+components = [NodePath("EnemyWingA"), NodePath("EnemyWingA2"), NodePath("EnemyWingC"), NodePath("EnemyWingC2"), NodePath("EnemyLaserGun"), NodePath("EnemyLaserGun2")]
+metadata/_custom_type_script = "uid://xpvgq5txvuvp"
+
+[node name="EnemyCoreTank" parent="." unique_id=710239867 instance=ExtResource("2_y4iau")]
+
+[node name="EnemyWingA" parent="." unique_id=227823163 instance=ExtResource("3_tk3uj")]
+position = Vector2(32, 16)
+rotation = 0.5235988
+
+[node name="EnemyWingA2" parent="." unique_id=1888315607 instance=ExtResource("3_tk3uj")]
+position = Vector2(-32, 16)
+rotation = -0.5235988
+scale = Vector2(-1, 1)
+
+[node name="EnemyWingC" parent="." unique_id=255064897 instance=ExtResource("4_1yeqo")]
+position = Vector2(35.999996, -11.999999)
+rotation = -0.2617994
+
+[node name="EnemyWingC2" parent="." unique_id=670482843 instance=ExtResource("4_1yeqo")]
+position = Vector2(-40.000008, -11.999998)
+rotation = 0.2617994
+scale = Vector2(-1, 1)
+
+[node name="EnemyLaserGun" parent="." unique_id=2092387067 instance=ExtResource("5_j25fd")]
+position = Vector2(-60, 0)
+
+[node name="EnemyLaserGun2" parent="." unique_id=112617667 instance=ExtResource("5_j25fd")]
+position = Vector2(56, 0)

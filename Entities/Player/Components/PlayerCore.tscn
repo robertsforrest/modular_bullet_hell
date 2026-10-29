@@ -12,6 +12,7 @@ height = 56.0
 [node name="PlayerCore" type="Area2D" unique_id=605424737 node_paths=PackedStringArray("connection_points", "collision_shape", "sprite") groups=["ship_cores"]]
 z_index = 1
 script = ExtResource("1_lphqv")
+hp = 100.0
 connection_points = [NodePath("ComponentSlot"), NodePath("ComponentSlot2"), NodePath("ComponentSlot3"), NodePath("ComponentSlot4")]
 component_size = 3
 collision_shape = NodePath("CollisionShape2D")

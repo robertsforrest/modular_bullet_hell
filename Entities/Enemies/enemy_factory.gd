@@ -1,24 +1,22 @@
 extends Node
 
 # Load enemy configurations
-const enemy_tscn: PackedScene = preload("res://Entities/Enemies/Enemy.tscn")
-const enemy_core: PackedScene = preload("res://Entities/Enemies/Components/Cores/EnemyCoreBasic.tscn")
-const enemy_wings: PackedScene = preload("res://Entities/Enemies/Components/Wings/EnemyWing1.tscn")
-const enemy_gun: PackedScene = preload("res://Entities/Enemies/Components/Guns/EnemyLaserGun.tscn")
-const enemy_logic_aim: PackedScene = preload("res://Entities/Enemies/Components/Logic/EnemyLogicAimAtPlayer.tscn")
-const enemy_logic_chase: PackedScene = preload("res://Entities/Enemies/Components/Logic/EnemyLogicChase.tscn")
+const enemy_base: Array[PackedScene] = [
+	preload("res://Entities/Enemies/Bases/EnemyBasicA.tscn"),
+	preload("res://Entities/Enemies/Bases/EnemyBasicB.tscn"),
+	preload("res://Entities/Enemies/Bases/EnemyTankA.tscn"),
+	preload("res://Entities/Enemies/Bases/EnemyTankB.tscn"),
+]
+# Load enemy logic types
+const enemy_logic: Dictionary = {
+	Enum.enemy_logic_types.AIM_AT_PLAYER: preload("res://Entities/Enemies/Components/Logic/EnemyLogicAimAtPlayer.tscn"),
+	Enum.enemy_logic_types.CHASE_PLAYER: preload("res://Entities/Enemies/Components/Logic/EnemyLogicChase.tscn",)
+}
 
 # Create and return a random enemy
 # TODO: add parameterization eventually rather than purely random enemies
 func generate_enemy() -> Node2D:
-	var new_enemy = enemy_tscn.instantiate()
-	var new_core = enemy_core.instantiate()
-	new_enemy.add_child(new_core)
-	new_enemy.ship_core = new_core
-	var wing_left = new_core.add_component(enemy_wings.instantiate(), 0)
-	var wing_right = new_core.add_component(enemy_wings.instantiate(), 1)
-	wing_right.add_component(enemy_gun.instantiate(), 1)
-	wing_left.add_component(enemy_gun.instantiate(), 1)
-	new_enemy.add_logic_component(enemy_logic_aim.instantiate())
-	new_enemy.add_logic_component(enemy_logic_chase.instantiate())
+	var new_enemy = enemy_base[3].instantiate()
+	new_enemy.add_logic_component(enemy_logic[Enum.enemy_logic_types.AIM_AT_PLAYER].instantiate())
+	new_enemy.add_logic_component(enemy_logic[Enum.enemy_logic_types.CHASE_PLAYER].instantiate())
 	return new_enemy

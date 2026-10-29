@@ -16,6 +16,14 @@ extends Node2D
 # Internal variables
 @onready var is_paused: bool = false
 
+# Initialize
+func _ready() -> void:
+	# Run connections on components when added to the tree to make sure anything added
+	# in the editor is linked up correctly when the player enters
+	for component in components:
+		component.run_slots_for_editor()
+		component.part_destroyed.connect(_on_part_destroyed)
+
 # Gameplay loop
 # Hard-coded pause variable in player allows movement to be halted without
 # interrupting processing on child ShipComponents in the ship editor
@@ -67,8 +75,29 @@ func do_movement_with_accel(delta: float) -> void:
 func add_ship_component(new_component: ShipComponent) -> void:
 	add_child(new_component)
 	components.append(new_component)
+	new_component.part_destroyed.connect(_on_part_destroyed)
 
 # Remove a component from the player
 func remove_ship_component(to_remove: ShipComponent) -> void:
 	components.erase(to_remove)
 	to_remove.queue_free()
+
+# Called when a component is destroyed
+func _on_part_destroyed(part: ShipComponent) -> void:
+	# Check if the core is destroyed - if it is, give a game over
+	if (part == ship_core):
+		print("Oh God! Game over!! :(")
+	# Check for orphaned components
+	var orphaned: Array[ShipComponent] = []
+	for component in components:
+		if (!component.is_connected_to_core()):
+			orphaned.append(component)
+	# Remove orphans from the scene
+	for orphan in orphaned:
+		components.erase(orphan)
+		orphan.queue_free()
+	# Update connections in the surviving children
+	#for component in components:
+	#	component.run_slots_for_editor()
+	# Remove part from component list
+	components.erase(part)

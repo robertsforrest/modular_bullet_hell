@@ -40,15 +40,23 @@ func run_slots_for_editor() -> void:
 		slot.seek_connections()
 		slot.draw_connection_lines()
 
+# Call this to apply damage to the component; will handle defenses,
+# particle effects, death checks, etc.
+func take_damage(amount: float) -> void:
+	hp -= amount # For now just take flat damage
+	# Check for death
+	if (hp <= 0):
+		get_destroyed()
+
 # Destroy this component; called from HP checks in child types
 func get_destroyed() -> void:
 	# Emit destruction signal
 	part_destroyed.emit(self)
-	# Propagate destruction to child components
-	for connection_point in connection_points:
-		if (connection_point.component != null):
-			connection_point.component.get_destroyed()
-	# Remove from the scene treeu
+	# Clear out line graphics (but this shouldn't be necessary??)
+	for slot in connection_points:
+		for line in slot.connection_lines:
+			line.clear_points()
+	# Remove from the scene tree
 	queue_free()
 
 # Handle area entered code; override in child nodes
