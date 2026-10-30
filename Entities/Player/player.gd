@@ -12,6 +12,7 @@ extends Node2D
 @onready var velocity: Vector2 = Vector2.ZERO
 @onready var accel: Vector2 = Vector2.ZERO
 @export var components: Array[ShipComponent] = [] # TODO: this should be programmatic, not exposed to the editor
+@export var inventory: Inventory
 
 # Internal variables
 @onready var is_paused: bool = false
