@@ -3,6 +3,7 @@ extends Node2D
 
 # Inventory is managed as a 2D array, with every element following the pattern [item: Resource, amount: int]
 @onready var inventory: Array[Array] = []
+@onready var money: float = 100.0 # Track money seperately as a static counter
 
 # The maximum amount of stuff that can go into the inventory
 @export var max_cargo_space: float = 100.0

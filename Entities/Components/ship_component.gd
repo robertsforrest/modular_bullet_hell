@@ -7,6 +7,7 @@ signal part_selected(part: ShipComponent)
 
 # Editor variables
 @export var hp: float = 1.0
+@onready var max_hp = hp
 @export var connection_points: Array[ComponentSlot]
 @export var component_size: Enum.component_size
 @export var collision_shape: CollisionShape2D
@@ -101,9 +102,11 @@ func get_all_connected_components() -> Array[ShipComponent]:
 # Handle input events for player ship component click'n'drag
 # TODO: add more checks here to ensure shit isn't grabbed erroneously in combat
 func _input(event: InputEvent) -> void:
-	if (event is InputEventMouseButton and Input.is_action_just_pressed("select") and mouse_over):
-		get_viewport().set_input_as_handled() # Stop input signal from propagating to overlapping parts
-		part_selected.emit(self) # Signal part selection to the editor node
+	if (event is InputEventMouseButton and Input.is_action_just_pressed("select") and mouse_over
+	# NOTE: pause mode is hard-coded here since control nodes will operate on components differently when the game is paused
+		and get_tree().paused == false):
+			get_viewport().set_input_as_handled() # Stop input signal from propagating to overlapping parts
+			part_selected.emit(self) # Signal part selection to the editor node
 
 # Handle mouse-over for player parts in the editor
 func _on_mouse_entered() -> void:

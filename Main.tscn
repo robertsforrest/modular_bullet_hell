@@ -3,25 +3,29 @@
 [ext_resource type="PackedScene" uid="uid://cton2g7db78di" path="res://Entities/Player/Player.tscn" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://dr76c8jcliu7t" path="res://main.gd" id="1_uu6xs"]
 [ext_resource type="Script" uid="uid://dycix7gb5055g" path="res://Entities/Enemies/enemy_factory.gd" id="3_r0du0"]
-[ext_resource type="PackedScene" uid="uid://bmvqkfiw1dnw0" path="res://Environment/Asteroids/Asteroid.tscn" id="4_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://dokiy4rb63cnv" path="res://Hangar/Hangar.tscn" id="4_cm0pq"]
 
-[node name="Main" type="Node2D" unique_id=1605391203 node_paths=PackedStringArray("player", "camera", "enemy_factory")]
+[node name="Main" type="Node2D" unique_id=1605391203 node_paths=PackedStringArray("player", "camera", "enemy_factory", "hangar_layer", "hangar")]
+process_mode = 3
 script = ExtResource("1_uu6xs")
-player = NodePath("Player")
-camera = NodePath("Camera2D")
-enemy_factory = NodePath("Node")
+player = NodePath("Pausable/Player")
+camera = NodePath("MainCamera")
+enemy_factory = NodePath("EnemyFactory")
+hangar_layer = NodePath("HangarLayer")
+hangar = NodePath("HangarLayer/Hangar")
 
-[node name="Player" parent="." unique_id=2004784632 instance=ExtResource("1_glv2v")]
-position = Vector2(-52, 12)
+[node name="MainCamera" type="Camera2D" parent="." unique_id=1373726602]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1373726602]
-
-[node name="Node" type="Node" parent="." unique_id=2127648709]
+[node name="EnemyFactory" type="Node" parent="." unique_id=2127648709]
 script = ExtResource("3_r0du0")
 
-[node name="Asteroid" parent="." unique_id=922854381 instance=ExtResource("4_cm0pq")]
-position = Vector2(-360, -312)
+[node name="HangarLayer" type="CanvasLayer" parent="." unique_id=497476233]
+visible = false
 
-[node name="Asteroid2" parent="." unique_id=908248613 instance=ExtResource("4_cm0pq")]
-position = Vector2(608, 376)
-direction = Vector2(-1, -1)
+[node name="Hangar" parent="HangarLayer" unique_id=169810937 instance=ExtResource("4_cm0pq")]
+
+[node name="Pausable" type="Node2D" parent="." unique_id=1935888431]
+process_mode = 1
+
+[node name="Player" parent="Pausable" unique_id=2004784632 instance=ExtResource("1_glv2v")]
+position = Vector2(-52, 12)

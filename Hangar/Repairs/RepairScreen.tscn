@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://k41mbcfmyp2t"]
+
+[ext_resource type="Script" uid="uid://diix3g6jdwma3" path="res://Hangar/Repairs/repair_screen.gd" id="1_500ix"]
+[ext_resource type="PackedScene" uid="uid://cton2g7db78di" path="res://Entities/Player/Player.tscn" id="2_wtrms"]
+
+[node name="RepairScreen" type="Control" unique_id=1947256295 node_paths=PackedStringArray("cost_label", "player")]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 960.0
+offset_top = 540.0
+offset_right = -960.0
+offset_bottom = -540.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_500ix")
+cost_label = NodePath("RepairCostLabel")
+player = NodePath("Player")
+
+[node name="RepairCostLabel" type="Label" parent="." unique_id=1591461250]
+z_index = 2
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.26719496, 0.57346106, 0.15356168, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+
+[node name="Player" parent="." unique_id=2004784632 instance=ExtResource("2_wtrms")]
