@@ -19,6 +19,7 @@ connection_points = [NodePath("ComponentSlot")]
 component_size = 2
 collision_shape = NodePath("CollisionShape2D")
 sprite = NodePath("ComponentSprite")
+inv_item_path = "res://Inventory/Items/machine_gun.tres"
 
 [node name="ComponentSprite" parent="." unique_id=1015244419 instance=ExtResource("4_4puur")]
 position = Vector2(0, 16)

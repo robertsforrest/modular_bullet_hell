@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dym57mo5kfg5g"]
+
+[ext_resource type="Script" uid="uid://bueh73buqtr6y" path="res://Entities/Player/Components/Wings/wing.gd" id="1_6wiys"]
+[ext_resource type="PackedScene" uid="uid://du4gf8fsml5rv" path="res://Entities/Components/ComponentSprite.tscn" id="2_2hafu"]
+[ext_resource type="Texture2D" uid="uid://c42cdnd15rtr7" path="res://Entities/Player/Assets/wing_1.png" id="3_llnd4"]
+[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Components/ComponentSlot.tscn" id="4_2bljd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bs1o3"]
+radius = 16.0
+height = 72.0
+
+[node name="WingA" type="Area2D" unique_id=79534973 node_paths=PackedStringArray("connection_points", "collision_shape", "sprite")]
+script = ExtResource("1_6wiys")
+hp = 6.0
+connection_points = [NodePath("ComponentSlot"), NodePath("ComponentSlot2"), NodePath("ComponentSlot3")]
+component_size = 2
+collision_shape = NodePath("CollisionShape2D")
+sprite = NodePath("ComponentSprite")
+inv_item_path = "res://Inventory/Items/wing_a.tres"
+
+[node name="ComponentSprite" parent="." unique_id=1015244419 instance=ExtResource("2_2hafu")]
+position = Vector2(8, 4)
+texture = ExtResource("3_llnd4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1734066212]
+position = Vector2(12, 4)
+shape = SubResource("CapsuleShape2D_bs1o3")
+
+[node name="ComponentSlot" parent="." unique_id=1604551304 instance=ExtResource("4_2bljd")]
+position = Vector2(-4, -16)
+max_size = 3
+max_distance = 30.0
+max_connections = 2
+
+[node name="ComponentSlot2" parent="." unique_id=632800591 instance=ExtResource("4_2bljd")]
+position = Vector2(28, -12)
+max_size = 3
+max_distance = 30.0
+max_connections = 2
+
+[node name="ComponentSlot3" parent="." unique_id=1004697927 instance=ExtResource("4_2bljd")]
+position = Vector2(28, 16)
+max_size = 1
+max_distance = 20.0

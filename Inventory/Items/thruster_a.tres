@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://ni2858jsucho"]
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://d2wd424suqtv7"]
 
 [ext_resource type="Script" uid="uid://bgwnwjc7km1jy" path="res://Inventory/inventory_item.gd" id="1_5s1or"]
-[ext_resource type="PackedScene" uid="uid://lumark28yxtc" path="res://Entities/Player/Components/Thrusters/Thruster.tscn" id="1_rmpaq"]
+[ext_resource type="PackedScene" uid="uid://lumark28yxtc" path="res://Entities/Player/Components/Thrusters/ThrusterA.tscn" id="1_rmpaq"]
 
 [resource]
 script = ExtResource("1_5s1or")
 item_type = 1
 item_scene = ExtResource("1_rmpaq")
-item_name = "Thruster"
+item_name = "Thruster Type A"
 cargo_space = 8.0
-buy_price = 10.0
-sell_price = 20.0
+buy_price = 60.0
+sell_price = 100.0
 metadata/_custom_type_script = "uid://bgwnwjc7km1jy"

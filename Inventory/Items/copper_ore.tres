@@ -5,7 +5,6 @@
 [resource]
 script = ExtResource("1_5q6k3")
 item_name = "Copper Ore"
-cargo_space = 2.0
-buy_price = 10.0
-sell_price = 20.0
+buy_price = 20.0
+sell_price = 30.0
 metadata/_custom_type_script = "uid://bgwnwjc7km1jy"
