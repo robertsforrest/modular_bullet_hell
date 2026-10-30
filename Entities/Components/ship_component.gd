@@ -11,6 +11,7 @@ signal part_selected(part: ShipComponent)
 @export var component_size: Enum.component_size
 @export var collision_shape: CollisionShape2D
 @export var sprite: ComponentSprite
+@export var inv_item: InventoryItem
 
 # Internal variables
 @onready var mouse_over: bool = false

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://demtnw66t8mda"]
+
+[ext_resource type="PackedScene" uid="uid://b6acxmrpx1owa" path="res://Entities/Player/Components/Guns/MachineGun.tscn" id="1_6c2l2"]
+[ext_resource type="Script" uid="uid://bgwnwjc7km1jy" path="res://Inventory/inventory_item.gd" id="1_tgkat"]
+
+[resource]
+script = ExtResource("1_tgkat")
+item_type = 1
+item_scene = ExtResource("1_6c2l2")
+item_name = "Machine Gun"
+cargo_space = 10.0
+buy_price = 100.0
+sell_price = 150.0
+metadata/_custom_type_script = "uid://bgwnwjc7km1jy"

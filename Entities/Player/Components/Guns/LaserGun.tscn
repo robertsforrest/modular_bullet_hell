@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://ino5mhbbsc41" path="res://Entities/Player/Components/Guns/laser_gun.gd" id="1_15782"]
 [ext_resource type="Texture2D" uid="uid://hw7aemxrynw2" path="res://Entities/Player/Assets/laser_gun.png" id="2_1mt4w"]
 [ext_resource type="PackedScene" uid="uid://bajbukconqclo" path="res://Entities/Player/Projectiles/PlayerLaserSmall.tscn" id="2_5pjx0"]
-[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Player/Components/ComponentSlot.tscn" id="4_jykxu"]
-[ext_resource type="PackedScene" uid="uid://du4gf8fsml5rv" path="res://Entities/Player/Components/ComponentSprite.tscn" id="4_oqjuo"]
+[ext_resource type="Resource" uid="uid://cww3fikmnm00x" path="res://Inventory/Items/laser_gun.tres" id="3_1g1ly"]
+[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Components/ComponentSlot.tscn" id="4_jykxu"]
+[ext_resource type="PackedScene" uid="uid://du4gf8fsml5rv" path="res://Entities/Components/ComponentSprite.tscn" id="4_oqjuo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_15782"]
 radius = 7.0
@@ -19,6 +20,7 @@ connection_points = [NodePath("ComponentSlot")]
 component_size = 1
 collision_shape = NodePath("CollisionShape2D")
 sprite = NodePath("ComponentSprite")
+inv_item = ExtResource("3_1g1ly")
 metadata/_custom_type_script = "uid://dpjmm3b83c1q8"
 
 [node name="ComponentSprite" parent="." unique_id=1015244419 instance=ExtResource("4_oqjuo")]

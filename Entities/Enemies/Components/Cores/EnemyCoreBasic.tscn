@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://f8dlcb2g3pnp" path="res://Entities/Enemies/Components/Cores/enemy_core_basic.gd" id="1_5actl"]
 [ext_resource type="Texture2D" uid="uid://4gq8u25q6osf" path="res://Entities/Enemies/Assets/enemy_core_basic.png" id="2_brav0"]
-[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Player/Components/ComponentSlot.tscn" id="3_4txx4"]
+[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Components/ComponentSlot.tscn" id="3_4txx4"]
+
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bs1o3"]
 radius = 20.0

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://cww3fikmnm00x"]
+
+[ext_resource type="PackedScene" uid="uid://dy8deqmtlgppq" path="res://Entities/Player/Components/Guns/LaserGun.tscn" id="1_2h10c"]
+[ext_resource type="Script" uid="uid://bgwnwjc7km1jy" path="res://Inventory/inventory_item.gd" id="1_a2bae"]
+
+[resource]
+script = ExtResource("1_a2bae")
+item_type = 1
+item_scene = ExtResource("1_2h10c")
+item_name = "Laser Gun"
+cargo_space = 3.0
+buy_price = 50.0
+sell_price = 75.0
+metadata/_custom_type_script = "uid://bgwnwjc7km1jy"

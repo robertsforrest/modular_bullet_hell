@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://du4gf8fsml5rv"]
 
-[ext_resource type="Script" uid="uid://coounv8r2dq10" path="res://Entities/Player/Components/component_sprite.gd" id="1_ewy3l"]
+[ext_resource type="Script" uid="uid://coounv8r2dq10" path="res://Entities/Components/component_sprite.gd" id="1_ewy3l"]
+
 
 [sub_resource type="Animation" id="Animation_ewy3l"]
 length = 0.001

@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://cn6nsfaj7ubiq" path="res://Entities/Player/Components/Guns/machine_gun.gd" id="1_0fojp"]
 [ext_resource type="Texture2D" uid="uid://2ec8bfmy2dye" path="res://Entities/Player/Assets/machine_gun.png" id="2_bsps6"]
 [ext_resource type="PackedScene" uid="uid://j3jimo0mff4q" path="res://Entities/Player/Projectiles/PlayerBullet.tscn" id="2_tvpx7"]
-[ext_resource type="PackedScene" uid="uid://du4gf8fsml5rv" path="res://Entities/Player/Components/ComponentSprite.tscn" id="4_4puur"]
-[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Player/Components/ComponentSlot.tscn" id="4_ia3sb"]
+[ext_resource type="PackedScene" uid="uid://du4gf8fsml5rv" path="res://Entities/Components/ComponentSprite.tscn" id="4_4puur"]
+[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Components/ComponentSlot.tscn" id="4_ia3sb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bsps6"]
 radius = 8.0
