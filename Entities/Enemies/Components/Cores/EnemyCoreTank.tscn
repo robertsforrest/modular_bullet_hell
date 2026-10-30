@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cj8lhywiahv3c" path="res://Entities/Enemies/Components/Cores/enemy_core_tank.gd" id="1_4ftcs"]
 [ext_resource type="Texture2D" uid="uid://ceonxh8qy1y6j" path="res://Entities/Enemies/Assets/enemy_core_tank.png" id="2_sgbnf"]
-[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Player/Components/ComponentSlot.tscn" id="3_4ftcs"]
+[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Components/ComponentSlot.tscn" id="3_4ftcs"]
+
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_sgbnf"]
 points = PackedVector2Array(-32, -24, 32, -24, 32, 8, 0, 32, -32, 8)

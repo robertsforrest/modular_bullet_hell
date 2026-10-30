@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://kyelbttsgi5b"]
+
+[ext_resource type="Script" uid="uid://m1woq0vlqxfq" path="res://Pickups/pickup.gd" id="1_gyo15"]
+[ext_resource type="Resource" uid="uid://j5l77bra8hhi" path="res://Inventory/Items/copper_ore.tres" id="2_rig2e"]
+[ext_resource type="Texture2D" uid="uid://cui20wqheup7a" path="res://Pickups/Assets/copper_ore.png" id="3_bahxs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c0xmu"]
+radius = 8.0
+
+[node name="CopperOre" type="Area2D" unique_id=1300222979]
+script = ExtResource("1_gyo15")
+inv_item = ExtResource("2_rig2e")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2019174265]
+texture = ExtResource("3_bahxs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1413877584]
+shape = SubResource("CircleShape2D_c0xmu")

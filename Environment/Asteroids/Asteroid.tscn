@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cmcj60u5t06e4" path="res://Environment/Asteroids/asteroid.gd" id="1_8j2xt"]
 [ext_resource type="Texture2D" uid="uid://brtj8aqsp7204" path="res://Environment/Assets/asteroid_large.png" id="2_7qpmh"]
+[ext_resource type="PackedScene" uid="uid://kyelbttsgi5b" path="res://Pickups/CopperOre.tscn" id="2_aop36"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8j2xt"]
 resource_local_to_scene = true
@@ -9,6 +10,7 @@ radius = 36.0
 
 [node name="Asteroid" type="Area2D" unique_id=922854381 node_paths=PackedStringArray("sprite", "collision_shape")]
 script = ExtResource("1_8j2xt")
+loot_drop_tscn = ExtResource("2_aop36")
 sprite = NodePath("Sprite2D")
 collision_shape = NodePath("CollisionShape2D")
 size = 2

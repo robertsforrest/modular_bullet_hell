@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://1mvu374r6s06"]
 
-[ext_resource type="Script" uid="uid://8awku0sdu4u5" path="res://Entities/Player/Components/component_slot.gd" id="1_1ynkm"]
+[ext_resource type="Script" uid="uid://8awku0sdu4u5" path="res://Entities/Components/component_slot.gd" id="1_1ynkm"]
 [ext_resource type="Texture2D" uid="uid://clawguqwxjcf3" path="res://Entities/Player/Assets/conn_line.png" id="2_7rqpl"]
 
 [node name="ComponentSlot" type="Node2D" unique_id=1604551304 node_paths=PackedStringArray("conn_line") groups=["component_slots"]]

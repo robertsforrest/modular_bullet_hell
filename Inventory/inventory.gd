@@ -19,12 +19,25 @@ func add_item(item: InventoryItem, amount: int) -> bool:
 				inventory[i][1] += amount
 				added = true
 		# If this item is not in the inventory, append it to the end
+		# TODO: check max slots? Might be overkill in conjunction with the load limit
 		if (!added):
 			inventory.append([item, amount])
+			added = true
 	# Debug - output the inventory to the console
 	print(inventory)
 	# Indicate success/failure
 	return added
+
+# Remove an item from the inventory
+# Returns a boolean indicating success or failure; i.e. whether amount of item was found in inventory
+func remove_item(item: InventoryItem, amount: int) -> bool:
+	var removed: bool = false
+	for i in range(inventory.size()):
+		if (inventory[i][0] == item and inventory[i][1] >= amount):
+			inventory[i][1] -= amount
+			removed = true
+			# TODO: if amount gets set to 0, remove from array? Could just keep as placeholder idk
+	return removed
 
 # Get the total amount of cargo in the inventory
 func get_cargo_amount() -> float:

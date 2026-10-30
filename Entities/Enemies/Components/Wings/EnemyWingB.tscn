@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b6yc6accyy626" path="res://Entities/Enemies/Components/enemy_component.gd" id="1_mr44y"]
 [ext_resource type="Texture2D" uid="uid://d0e4solv7t7a6" path="res://Entities/Enemies/Assets/enemy_wing_2.png" id="2_87el2"]
-[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Player/Components/ComponentSlot.tscn" id="3_aiehj"]
+[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Components/ComponentSlot.tscn" id="3_aiehj"]
+
 
 [node name="EnemyWingB" type="Area2D" unique_id=227823163 node_paths=PackedStringArray("connection_points")]
 script = ExtResource("1_mr44y")

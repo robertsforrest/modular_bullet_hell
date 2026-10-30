@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://m3mt5whtpiqr" path="res://Entities/Enemies/Components/Guns/enemy_laser_gun.gd" id="1_ldsc7"]
 [ext_resource type="Texture2D" uid="uid://hw7aemxrynw2" path="res://Entities/Player/Assets/laser_gun.png" id="2_ldsc7"]
 [ext_resource type="PackedScene" uid="uid://blfmhjgu05o0x" path="res://Entities/Enemies/Projectiles/EnemyLaserSmall.tscn" id="2_wrh81"]
-[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Player/Components/ComponentSlot.tscn" id="4_ipuvy"]
+[ext_resource type="PackedScene" uid="uid://1mvu374r6s06" path="res://Entities/Components/ComponentSlot.tscn" id="4_ipuvy"]
+
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldsc7"]
 radius = 8.0

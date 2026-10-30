@@ -1,5 +1,6 @@
 extends Area2D
 
+# Asteroid properties
 const asteroid_tscn: PackedScene = preload("res://Environment/Asteroids/Asteroid.tscn")
 const asteroid_textures: Dictionary = {
 	Enum.asteroid_size.SMALL: preload("res://Environment/Assets/asteroid_small.png"),
@@ -18,6 +19,8 @@ const hp_amounts: Dictionary = {
 }
 
 # Editor variables
+@export var loot_drop_tscn: PackedScene
+@export var loot_drop_amount: int = 1
 @export var sprite: Sprite2D
 @export var collision_shape: CollisionShape2D
 @export var hp: float = 10.0
@@ -56,6 +59,14 @@ func _on_area_entered(area: Area2D) -> void:
 
 # Called when the asteroid gets killed
 func get_destroyed() -> void:
+	# Drop loot, if applicable
+	if (loot_drop_amount >= 1):
+		for i in range(loot_drop_amount):
+			var loot = loot_drop_tscn.instantiate()
+			loot.global_position = self.global_position
+			loot.direction = Vector2.from_angle(deg_to_rad(randf_range(0,360)))
+			loot.move_spd = randf_range(20.0, 30.0)
+			get_tree().get_current_scene().add_child(loot)
 	# Small asteroids just get yoinked, simple as
 	if (size == Enum.asteroid_size.SMALL):
 		queue_free()
@@ -68,4 +79,5 @@ func get_destroyed() -> void:
 			new_asteroid.move_spd = randf_range(30.0, 60.0) # TODO: magic number naughty naughty!
 			new_asteroid.direction = Vector2.from_angle(deg_to_rad(randf_range(0,360)))
 			get_tree().get_current_scene().add_child(new_asteroid)
+		# Destroy the asteroid
 		queue_free()
