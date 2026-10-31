@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://d1r207y1rye2d" path="res://Hangar/hangar.gd" id="1_fbsdv"]
 [ext_resource type="Texture2D" uid="uid://bypntql5fadt0" path="res://Hangar/Assets/mechanic.png" id="1_jeobe"]
-[ext_resource type="Texture2D" uid="uid://71trbm17ovf7" path="res://GUI/Assets/button_rectangle.png" id="3_vbci6"]
+[ext_resource type="PackedScene" uid="uid://k41mbcfmyp2t" path="res://Hangar/Repairs/RepairScreen.tscn" id="3_vbci6"]
 
-[node name="Hangar" type="Control" unique_id=169810937 node_paths=PackedStringArray("johnny")]
+[node name="Hangar" type="Control" unique_id=169810937 node_paths=PackedStringArray("johnny", "repair_screen")]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
@@ -14,6 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fbsdv")
 johnny = NodePath("Johnny")
+repair_screen = NodePath("TabContainer/TabRepair/RepairScreen")
 
 [node name="Johnny" type="TextureRect" parent="." unique_id=524440496]
 layout_mode = 1
@@ -26,71 +27,39 @@ offset_right = -44.360046
 offset_bottom = 1.0
 texture = ExtResource("1_jeobe")
 
-[node name="OptionButtons" type="VBoxContainer" parent="." unique_id=825928943]
+[node name="TabContainer" type="TabContainer" parent="." unique_id=1362471075]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.437
+anchor_left = 0.425
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 80.95996
-offset_top = 100.0
-offset_right = -132.0
-offset_bottom = -116.0
-
-[node name="ButtonShop" type="TextureButton" parent="OptionButtons" unique_id=758008437]
-layout_mode = 2
-texture_normal = ExtResource("3_vbci6")
-
-[node name="Label" type="Label" parent="OptionButtons/ButtonShop" unique_id=810660320]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.92200005
-anchor_bottom = 1.0
-offset_right = -0.2960205
+offset_left = 80.0
+offset_top = 112.0
+offset_right = -76.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 128
-text = "SHOP"
-horizontal_alignment = 1
-vertical_alignment = 1
+mouse_filter = 2
+current_tab = 0
 
-[node name="ButtonRepair" type="TextureButton" parent="OptionButtons" unique_id=1273133769]
+[node name="TabShop" type="TabBar" parent="TabContainer" unique_id=1194265654]
 layout_mode = 2
-texture_normal = ExtResource("3_vbci6")
+metadata/_tab_index = 0
 
-[node name="Label" type="Label" parent="OptionButtons/ButtonRepair" unique_id=392785084]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.92200005
-anchor_bottom = 1.0
-offset_right = -0.2960205
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 128
-text = "REPAIR"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ButtonEdit" type="TextureButton" parent="OptionButtons" unique_id=1869142719]
+[node name="TabRepair" type="TabBar" parent="TabContainer" unique_id=845398058]
+visible = false
 layout_mode = 2
-texture_normal = ExtResource("3_vbci6")
+close_with_middle_mouse = false
+scrolling_enabled = false
+switch_on_drag_hover = false
+metadata/_tab_index = 1
 
-[node name="Label" type="Label" parent="OptionButtons/ButtonEdit" unique_id=1905386289]
+[node name="RepairScreen" parent="TabContainer/TabRepair" unique_id=1947256295 instance=ExtResource("3_vbci6")]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.92200005
-anchor_bottom = 1.0
-offset_right = -0.2960205
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 128
-text = "EDIT SHIP"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[connection signal="pressed" from="OptionButtons/ButtonShop" to="." method="_on_button_shop_pressed"]
-[connection signal="pressed" from="OptionButtons/ButtonRepair" to="." method="_on_button_repair_pressed"]
-[connection signal="pressed" from="OptionButtons/ButtonEdit" to="." method="_on_button_edit_pressed"]
+[node name="TabEdit" type="TabBar" parent="TabContainer" unique_id=741965639]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[connection signal="tab_selected" from="TabContainer" to="." method="_on_tab_container_tab_selected"]

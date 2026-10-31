@@ -22,7 +22,8 @@ script = ExtResource("3_r0du0")
 [node name="HangarLayer" type="CanvasLayer" parent="." unique_id=497476233]
 visible = false
 
-[node name="Hangar" parent="HangarLayer" unique_id=169810937 instance=ExtResource("4_cm0pq")]
+[node name="Hangar" parent="HangarLayer" unique_id=169810937 node_paths=PackedStringArray("player") instance=ExtResource("4_cm0pq")]
+player = NodePath("../../Pausable/Player")
 
 [node name="Pausable" type="Node2D" parent="." unique_id=1935888431]
 process_mode = 1

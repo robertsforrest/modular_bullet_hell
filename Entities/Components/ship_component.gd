@@ -111,5 +111,7 @@ func _input(event: InputEvent) -> void:
 # Handle mouse-over for player parts in the editor
 func _on_mouse_entered() -> void:
 	mouse_over = true
+	print("Mouse over part: " + str(self))
 func _on_mouse_exited() -> void:
+	print("Mouse not over part: " + str(self))
 	mouse_over = false

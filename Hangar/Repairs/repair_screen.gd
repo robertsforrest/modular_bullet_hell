@@ -7,26 +7,13 @@ extends Control
 @export var cost_per_point_repaired: float = 10.0
 
 # Internal variables
-@export var player: Node2D # Snag a player to reparent and work on
+@onready var player: Node2D # Snag a player to reparent and work on
 @onready var component_mouse_over: ShipComponent = null # Tracks the currently hovered ShipComponent from a loop
-
-# Initialize
-func _ready() -> void:
-	get_tree().paused = true
-	# Reparent the player to this node for repairs
-	player.reparent(self)
-	# Update player properties in line with repair logic
-	player.is_paused = true
-	player.rotation = 0
-	# DEBUG - apply some damage to the player to test logic
-	player.ship_core.take_damage(20)
-	player.components[0].take_damage(2)
-	# Add a visual indicator to damage components
-	set_damage_indicators()
 
 # Handle inputs
 func _input(event: InputEvent) -> void:
 	if (event is InputEventMouseButton and Input.is_action_just_pressed("select")):
+		print("Input event in repair screen yippee!")
 		if (component_mouse_over != null):
 			if (can_afford_repair(component_mouse_over)):
 				player.inventory.money -= get_repair_cost(component_mouse_over)
@@ -43,6 +30,7 @@ func _process(delta: float) -> void:
 		if (component.mouse_over and component.hp < component.max_hp):
 			# Track this component for input handling
 			component_mouse_over = component
+			print("Mouse over: " + str(component_mouse_over))
 			# Calculate repair cost
 			var repair_cost = get_repair_cost(component)
 			#print("Repair " + str(component) + " for $" + str(repair_cost))
@@ -79,3 +67,15 @@ func set_damage_indicators() -> void:
 			component.sprite.set_warning(true)
 		else:
 			component.sprite.set_warning(false)
+
+# Initialize properties when this tab is selected
+func set_active_tab() -> void:
+	print("Repair tab selected!")
+	player.ship_core.take_damage(5)
+	player.components[0].take_damage(1)
+	set_damage_indicators()
+	player.rotation = 0
+	# Reparent the player to this node for repair logic
+	player.reparent(self)
+	player.position = Vector2(0,0)
+	print(player.get_parent())
